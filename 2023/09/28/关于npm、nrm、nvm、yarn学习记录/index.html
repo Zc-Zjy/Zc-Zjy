@@ -1,0 +1,748 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" color-mode=light>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>关于npm、nrm、nvm、yarn学习记录 - 小Z😊成长录◝( •̀ ω •́ )✧</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  <meta name="keywords" content="ZcZjy,Blogs,Java,Spring,软件开发技术">
+  <meta name="description" content="
+一、npm1、什么是npm？npm 是 Node.j...">
+  <meta name="author" content="ZcZjy">
+  <link rel="icon" href="/images/icons/dog.png" type="image/png" sizes="16x16">
+  <link rel="icon" href="/images/icons/dog.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/images/icons/dog.png" sizes="180x180">
+  <meta rel="mask-icon" href="/images/icons/dog.svg" color="#333333">
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/dog.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+    
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_1445822_p6ry5n7lrr.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+    
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css" name="highlight-style" mode="light">
+
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solarized-dark.min.css" name="highlight-style" mode="dark">
+
+      
+  
+
+  <script>
+	
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      loading: {
+        gif: '/images/theme/loading.gif',
+        lottie: ''
+      },
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: {
+          gif: '/images/theme/loading.gif',
+          lottie: ''
+        }
+      },
+      donate: {
+        enable: true,
+        alipay: '/images/zjyzfb.jpg',
+        wechat: '/images/zjyzanshang.jpg'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: true,
+        always_show: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      },
+      preview: {
+        background: {
+          default: '',
+          api: ''
+        },
+        motto: {
+          default: '励志成为技术大牛的一名小白',
+          typing: true,
+          api: '',
+          data_contents: '["data","content"]'
+        },
+      },
+      qrcode: {
+        enable: false,
+        type: 'url',
+        image: 'https://pic.izhaoo.com/weapp-code.jpg',
+      },
+      toc: {
+        enable: true
+      },
+      scrollbar: {
+        type: 'default'
+      },
+      notification: {
+        enable: false,
+        delay: 4500,
+        list: '',
+        page_white_list: '',
+        page_black_list: ''
+      },
+      search: {
+        enable: true,
+        path: '/search.xml'
+      }
+    }
+	console.log(111111,CONFIG.search)
+  </script>
+
+  
+
+  
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="lock-screen">
+  <div class="loading" id="loading"></div>
+  
+    
+
+
+  <nav class="navbar">
+    <div class="left">
+      
+        <i class="iconfont iconhome j-navbar-back-home"></i>
+      
+      
+      
+        <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+      
+      
+        <i class="iconfont iconsearch j-navbar-search"></i>
+      
+	  <div class="vertical"></div>
+	  <div id="tp-weather-widget" style="margin-left: 15px;padding: 0 10px;border-radius: 20px;"></div>
+	  <div class="vertical"></div>
+	  <div class="ZcZjy" onclick="hitokoto()">ZcZjy：<span id="ZcZjytext" class="ZcZjytext">换一句！~vo(*^＠^*)o</span></div>
+	  <div id="hitokoto" class="hitokoto">
+	    <div id="hitokoto_text" class="hitokoto">今天该说什么呢和φ(*￣0￣)...</div>
+	  </div>
+	  <style>
+	  .vertical {
+		  height: 25px;
+		  border-right: 2px solid grey;
+		  margin-left: 10px;
+		  color: white;
+		  text-shadow: 1px 1px 1px grey,
+		  			  1px 1px 5px grey,
+		  			  1px 1px 10px grey;
+	  }
+	  .dsrBSL {
+		 color: white;
+		 text-shadow: 1px 1px 1px grey,
+		 			  1px 1px 5px grey,
+		 			  1px 1px 10px grey;
+		  font-size: 15px;
+	  }  
+	  .navbar .iconfont {
+		  color: #dddddd;
+		  text-shadow: 1px 1px 1px grey;
+	  }
+	  .ZcZjy {
+		 position: relative;
+		 display: inline-block;
+		 margin-left: 15px;
+		 color: white;
+		 text-shadow: 1px 1px 1px grey,
+		 			  1px 1px 5px grey,
+		 			  1px 1px 10px grey;
+	  }
+	  .ZcZjytext {
+		  font-size: 10px;
+		  width: 150px;
+	  }
+	  .ZcZjy .ZcZjytext {
+	  visibility: hidden;
+	  color: white;
+	  text-align: center;
+	  border-radius: 10px;
+	  padding: 5px;
+	  position: absolute;
+	  z-index: 1;
+	  top: 105%;
+	  left: 50%;
+	  transform: translateX(-50%);
+	  opacity: 0;
+	  transition: opacity 0.3s;
+	  }
+	  .hitokoto {
+		  font-weight: lighter;
+		  margin-left: 5px;
+		  color: white;
+		  text-shadow: 1px 1px 1px grey,
+						1px 1px 5px grey,
+						1px 1px 10px grey;
+	  }
+	  .ZcZjy:hover .ZcZjytext {
+	  visibility: visible;
+	  opacity: 1;
+	  }
+	  .ZcZjy:hover, .hitokoto:hover {
+		  
+		  cursor: pointer;
+		  font-size: 18px;
+		  text-shadow: 0 0 0 10px #dddddd,
+					   0 0 0 20px #dddddd,
+					   0 0 0 40px #dddddd,
+					   0 0 0 80px #dddddd,
+					   0 0 0 120px #dddddd,
+					   0 0 0 160px #dddddd;
+	  }
+	  .hitokoto {
+		position: relative;
+		overflow: hidden;
+		border-bottom: 1px solid white;
+	  }
+	  .hitokoto::after {
+		content: "";
+		position: absolute;
+		right: 0px;
+		height: 32px;
+		border-right: 2px solid #dddddd;
+		animation: showInfinite 0.5s infinite both;
+	  }
+	  @keyframes showInfinite {
+	    0% {
+	      opacity: 1;
+	    }
+	    100% {
+	      opacity: 0;
+	    }
+	  }
+	  </style>
+	  <script>
+
+	  
+	  function hitokoto () {
+			$.ajax({
+				url: "https://v1.hitokoto.cn/",
+				type: 'GET',
+				dataType: 'json',
+				success: function(res) {
+					printHitokoto(res.hitokoto);
+				}
+			})
+		}
+		
+		function printHitokoto (text) {
+			var i = 0;
+			var timer = setInterval(function() {
+				if (i >= text.length) {
+					clearInterval(timer);
+				}
+				$("#hitokoto").text(text.slice(0, i++));
+			}, 100);
+		}
+		
+		function ZcZjytext() {
+		  //停止执行间隔函数
+		  if (setIntervalFun != null) {
+		   	clearInterval(setIntervalFun);
+			setIntervalFun = null;
+			$("#ZcZjytext").text("说话！~vo(*^＠^*)o");
+		  }else {
+			  setIntervalFun = setInterval("hitokoto()", 7000);
+			  $("#ZcZjytext").text("住嘴！~v`(*>﹏<*)′");
+		  }
+		}
+		(function(a,h,g,f,e,d,c,b){b=function(){d=h.createElement(g);c=h.getElementsByTagName(g)[0];d.src=e;d.charset="utf-8";d.async=1;c.parentNode.insertBefore(d,c)};a["SeniverseWeatherWidgetObject"]=f;a[f]||(a[f]=function(){(a[f].q=a[f].q||[]).push(arguments)});a[f].l=+new Date();if(a.attachEvent){a.attachEvent("onload",b)}else{a.addEventListener("load",b,false)}}(window,document,"script","SeniverseWeatherWidget","//cdn.sencdn.com/widget2/static/js/bundle.js?t="+parseInt((new Date().getTime() / 100000000).toString(),10)));
+		window.SeniverseWeatherWidget('show', {
+		  flavor: "slim",
+		  location: "WX4FBXXFKE4F",
+		  geolocation: true,
+		  language: "zh-Hans",
+		  unit: "c",
+		  theme: "auto",
+		  token: "12b1be52-c77a-49de-99f9-dcb0fd324d19",
+		  hover: "enabled",
+		  container: "tp-weather-widget"
+		});
+	  </script>
+    </div>
+    <div class="center">
+		关于npm、nrm、nvm、yarn学习记录
+	</div>
+    <div class="right">
+      <i class="iconfont iconmenu j-navbar-menu"></i>
+    </div>
+    
+  </nav>
+
+  
+  
+
+<nav class="menu">
+  <div class="menu-container">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content"><li class="menu-item">		
+        <a href="/ " class="underline "> 首页</a>
+      </li><li class="menu-item">		
+        <a href="/tags/ " class="underline "> 标签</a>
+      </li><li class="menu-item">		
+        <a href="/categories/ " class="underline "> 分类</a>
+      </li></ul>
+    
+      <div class="menu-copyright"><p>Copyright© 2023 建站  |  ZcZjy ( 还没备案喔~！！！ )</p><p>联系我：540507521@qq.com</p><p>关于我：我是ZcZjy</p><p>积少成多，只要学不死就往死里学👀</p><p>喜欢分享，也喜欢交朋友，正在努力钻研java、spring全家桶、前端vue等等技术，梦想成为一名技术大牛</p></div>
+    
+  </div>
+</nav>
+  <main id="main">
+  <div class="article-wrap">
+    <div class="row container">
+      <div class="col-xl-3"></div>
+      <div class="col-xl-6"><article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="/images/text_cover_background/cover_background.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">关于npm、nrm、nvm、yarn学习记录</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>九月 28, 2023</span>
+      
+        <span class="post-info-item">
+          <i class="iconfont iconeye"></i><span id="/2023/09/28/%E5%85%B3%E4%BA%8Enpm%E3%80%81nrm%E3%80%81nvm%E3%80%81yarn%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" class="leancloud-counter" data-flag-title="关于npm、nrm、nvm、yarn学习记录"></span>
+        </span>
+        <span class="post-info-item">
+          <i class="iconfont iconheart"></i><span id="/2023/09/28/%E5%85%B3%E4%BA%8Enpm%E3%80%81nrm%E3%80%81nvm%E3%80%81yarn%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" class="leancloud-like" data-flag-title="关于npm、nrm、nvm、yarn学习记录"></span>
+        </span>
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>2916</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        
+        <hr>
+<h1 id="一、npm"><a href="#一、npm" class="headerlink" title="一、npm"></a>一、npm</h1><h6 id="1、什么是npm？"><a href="#1、什么是npm？" class="headerlink" title="1、什么是npm？"></a>1、什么是npm？</h6><p>npm 是 Node.js 的包管理器，用于安装、管理、卸载 JavaScript 模块。npm 提供了一个包管理器，使得开发者可以方便使用第三方模块，同时也可以将自己编写的模块发布到 npm 上供其他人使用。（npm相当于后端的maven，帮助我们下载依赖）<br><strong>注意：</strong><br>    npm不用安装，只要安装了nodejs就有了。</p>
+<h6 id="2、官网地址"><a href="#2、官网地址" class="headerlink" title="2、官网地址"></a>2、官网地址</h6><p><a target="_blank" rel="noopener" href="https://www.npmjs.com/">https://www.npmjs.com/</a></p>
+<h6 id="3、中文官网地址"><a href="#3、中文官网地址" class="headerlink" title="3、中文官网地址"></a>3、中文官网地址</h6><p><a target="_blank" rel="noopener" href="https://www.npmjs.cn/">https://www.npmjs.cn/</a></p>
+<h6 id="4、使用方法"><a href="#4、使用方法" class="headerlink" title="4、使用方法"></a>4、使用方法</h6><p>（1）查看npm版本</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm -v</span><br></pre></td></tr></table></figure>
+<p>（2）初始化一个npm项目<br>说明：在目录下运行下面的命名，目录中就会 多了一个文件 package.json（相当于pom.xml）</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// -y:直接生成 package.json</span><br><span class="line">npm init -y</span><br></pre></td></tr></table></figure>
+<p>（3）下载依赖包</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 可以简写为：npm i 【包名】</span><br><span class="line">npm install 【包名】</span><br></pre></td></tr></table></figure>
+<p><strong>说明：</strong><br>npm install xxx –save –global（简写：-g）（简写：-S大写）-dev</p>
+<ul>
+<li>xxx 表示某个依赖名字</li>
+<li>–save 表示将这个依赖保存进 package.json 依赖标签里</li>
+<li>-dev 表示将这个依赖保存进 package.json 开发依赖标签里。</li>
+<li>–global 表示全局安装</li>
+</ul>
+<p>（4）同时下载多个依赖包</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 包名之间用空格隔开</span><br><span class="line">npm i 【包名<span class="number">1</span>】 【包名<span class="number">2</span>】 【包名<span class="number">3</span>】...</span><br></pre></td></tr></table></figure>
+<p>（5）配置npm下载镜像</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> registry http://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+<p>（6）卸载某个依赖包</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 可以简写为：npm i 【包名】</span><br><span class="line">npm uninstall 【包名】</span><br></pre></td></tr></table></figure>
+<p>（7）npm启动项目命令</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 具体查看package.json中是不是serve</span><br><span class="line">npm run serve</span><br></pre></td></tr></table></figure>
+<p>（8）npm构建项目命令</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run build</span><br></pre></td></tr></table></figure>
+<p>（7）如何找依赖包<br>    可以去上面第2点中的官网查找需要的依赖包名。</p>
+<br/>
+
+<hr>
+<br/>
+
+
+<h1 id="二、yarn"><a href="#二、yarn" class="headerlink" title="二、yarn"></a>二、yarn</h1><h6 id="1、什么yarn？"><a href="#1、什么yarn？" class="headerlink" title="1、什么yarn？"></a>1、什么yarn？</h6><p>和npm是一样的（yarn需要使用npm安装，npm是npdejs自带的）。</p>
+<h6 id="2、官网"><a href="#2、官网" class="headerlink" title="2、官网"></a>2、官网</h6><p>（1）地址1：<a target="_blank" rel="noopener" href="https://yarnpkg.com/">https://yarnpkg.com/</a><br>（2）地址2：<a target="_blank" rel="noopener" href="https://classic.yarnpkg.com/en/docs/install/#windows-stable">https://classic.yarnpkg.com/en/docs/install/#windows-stable</a></p>
+<h6 id="3、中文官网"><a href="#3、中文官网" class="headerlink" title="3、中文官网"></a>3、中文官网</h6><p>（1）地址1：<a target="_blank" rel="noopener" href="https://yarn.nodejs.cn/">https://yarn.nodejs.cn/</a><br>（2）地址2：<a target="_blank" rel="noopener" href="https://www.yarnpkg.cn/">https://www.yarnpkg.cn/</a></p>
+<h6 id="4、使用方法-1"><a href="#4、使用方法-1" class="headerlink" title="4、使用方法"></a>4、使用方法</h6><p>（1）安装方法</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --global yarn</span><br></pre></td></tr></table></figure>
+<p>（2）查看版本</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn --version</span><br></pre></td></tr></table></figure>
+<p>（3）添加依赖包<br><strong>说明：</strong> 下载不了就加  –ignore-engines</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">yarn add [package]</span><br><span class="line">yarn add [package]@[version]</span><br><span class="line">yarn add [package]@[tag]</span><br><span class="line"></span><br><span class="line">// 分别添加到 devDependencies、peerDependencies、optionalDependencies</span><br><span class="line">yarn add [package] --dev</span><br><span class="line">yarn add [package] --peer</span><br><span class="line">yarn add [package] --optional</span><br></pre></td></tr></table></figure>
+<p>（4）升级依赖</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yarn upgrade [package]</span><br><span class="line">yarn upgrade [package]@[version]</span><br><span class="line">yarn upgrade [package]@[tag]</span><br></pre></td></tr></table></figure>
+<p>（5）删除依赖</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn remove [package]</span><br></pre></td></tr></table></figure>
+
+<br/>
+
+<hr>
+<br/>
+
+
+<h1 id="三、nrm"><a href="#三、nrm" class="headerlink" title="三、nrm"></a>三、nrm</h1><h6 id="1、什么是nrm？为什么要使用nrm？"><a href="#1、什么是nrm？为什么要使用nrm？" class="headerlink" title="1、什么是nrm？为什么要使用nrm？"></a>1、什么是nrm？为什么要使用nrm？</h6><p>我们在使用npm下载依赖的时候，如果不设置国内镜像，下载得就很慢，所以我们需要手动去设置镜像，有可能有些依赖还不能使用国内镜像下载，这个时候还得去设置镜像，虽然有cnpm，但是还是太麻烦了。而nrm就是帮助我们解决了这个麻烦事，提供了一些最常用的npm包镜像地址，能够让我们快速的切换镜像地址。</p>
+<h6 id="2、使用方法"><a href="#2、使用方法" class="headerlink" title="2、使用方法"></a>2、使用方法</h6><p>（1）安装方法</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 全局安装nrm包</span><br><span class="line">npm i nrm -g</span><br></pre></td></tr></table></figure>
+<p>（2）查看当前所有可用的镜像源地址以及当前所使用的镜像源地址</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nrm ls</span><br></pre></td></tr></table></figure>
+<p>（3）切换不同的镜像源地址</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 切换成npm镜像</span><br><span class="line">nrm use npm</span><br><span class="line"></span><br><span class="line">// 切换成taobao镜像</span><br><span class="line">urm use taobao</span><br></pre></td></tr></table></figure>
+
+<br/>
+
+<hr>
+<br/>
+
+<h1 id="四、nvm"><a href="#四、nvm" class="headerlink" title="四、nvm"></a>四、nvm</h1><h6 id="1、什么是nvm？为什么要使用nvm？"><a href="#1、什么是nvm？为什么要使用nvm？" class="headerlink" title="1、什么是nvm？为什么要使用nvm？"></a>1、什么是nvm？为什么要使用nvm？</h6><p>我们在使用nodejs的时候，一台电脑只能装一个版本的nodejs，如果我们想要更换nodejs版本，就需要我们卸载已有的版本，重新下载我们需要的版本，很麻烦，而nvm帮我们解决了这个麻烦事。<br>nvm是一个 node版本管理工具，拥有它可以轻松的让我们在一台电脑上随时切换node版本。</p>
+<h6 id="2、官网地址-1"><a href="#2、官网地址-1" class="headerlink" title="2、官网地址"></a>2、官网地址</h6><p><a target="_blank" rel="noopener" href="https://nvm.uihtm.com/">https://nvm.uihtm.com/</a></p>
+<h6 id="3、使用方法"><a href="#3、使用方法" class="headerlink" title="3、使用方法"></a>3、使用方法</h6><p>（1）设置镜像<br>    在 nvm 的安装路径下，找到 settings.txt，设置node_mirro与npm_mirror为国内镜像地址。<br>    将下面两行复制粘贴进settings.txt中。</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">node_mirror: https://npm.taobao.org/mirrors/node/</span><br><span class="line">npm_mirror: https://npm.taobao.org/mirrors/npm/</span><br><span class="line"></span><br><span class="line">// 或者</span><br><span class="line">nvm npm_mirror https://npmmirror.com/mirrors/npm/</span><br><span class="line">nvm node_mirror https://npmmirror.com/mirrors/node/</span><br></pre></td></tr></table></figure>
+<p>（2）显示nodejs可下载版本的部分列表</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm list available</span><br></pre></td></tr></table></figure>
+<p>也可以打开链接查看可以node版本：<a target="_blank" rel="noopener" href="https://registry.npmmirror.com/binary.html?path=node/">https://registry.npmmirror.com/binary.html?path=node/</a><br>（3）安装最新版本 ( 安装时可以在上面看到 node.js 、 npm 相应的版本号 ，不建议安装最新版本)</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm install latest</span><br></pre></td></tr></table></figure>
+<p>（4）安装指定的版本的nodejs</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 例如：nvm install <span class="number">8</span>.<span class="number">12</span>.<span class="number">0</span></span><br><span class="line">nvm install 【版本号】</span><br></pre></td></tr></table></figure>
+<p>（5）查看已安装版本<br><strong>说明：</strong> 当前版本号前面没有 * ， 此时还没有使用任何一个版本，这时使用 node.js 时会报错。 </p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 简写：nvm ls</span><br><span class="line">nvm list</span><br></pre></td></tr></table></figure>
+<p>（6）切换node版本<br><strong>说明：</strong>  这时会发现在启用的 node 版本前面有 * 标记，这时就可以使用 node.js。</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm use 【版本号】</span><br></pre></td></tr></table></figure>
+
+<br/>
+
+<hr>
+<br/>
+
+<h1 id="五、其它问题"><a href="#五、其它问题" class="headerlink" title="五、其它问题"></a>五、其它问题</h1><h5 id="1、npx、npm、cnpm、pnpm区别"><a href="#1、npx、npm、cnpm、pnpm区别" class="headerlink" title="1、npx、npm、cnpm、pnpm区别"></a>1、npx、npm、cnpm、pnpm区别</h5><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/494076214">https://zhuanlan.zhihu.com/p/494076214</a></p>
+<h5 id="2、npm、nrm、nvm的安装和使用"><a href="#2、npm、nrm、nvm的安装和使用" class="headerlink" title="2、npm、nrm、nvm的安装和使用"></a>2、npm、nrm、nvm的安装和使用</h5><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/95d5228ac73e">https://www.jianshu.com/p/95d5228ac73e</a></p>
+
+      </section>
+      <section class="extra">
+        
+          <ul class="copyright">
+  
+    <li><strong>本文作者：</strong>ZcZjy</li>
+    <li><strong>本文链接：</strong><a href="https://zuo-junyuan.gitee.io/2023/09/28/%E5%85%B3%E4%BA%8Enpm%E3%80%81nrm%E3%80%81nvm%E3%80%81yarn%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/index.html" title="https:&#x2F;&#x2F;zuo-junyuan.gitee.io&#x2F;2023&#x2F;09&#x2F;28&#x2F;%E5%85%B3%E4%BA%8Enpm%E3%80%81nrm%E3%80%81nvm%E3%80%81yarn%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95&#x2F;index.html">https:&#x2F;&#x2F;zuo-junyuan.gitee.io&#x2F;2023&#x2F;09&#x2F;28&#x2F;%E5%85%B3%E4%BA%8Enpm%E3%80%81nrm%E3%80%81nvm%E3%80%81yarn%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95&#x2F;index.html</a></li>
+    <li><strong>版权声明：</strong>本博客所有文章均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" title="BY-NC-SA" target="_blank" rel="noopener">BY-NC-SA</a> 许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+          <section class="donate">
+  <div id="qrcode-donate">
+    <img   class="lazyload" data-original="/images/zjyzfb.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+        
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/" rel="tag">nodejs</a></li></ul> 
+
+        
+  <nav class="nav">
+    <a href="/2023/09/28/%E5%85%B3%E4%BA%8E%E4%BD%BF%E7%94%A8Postman%E7%AC%94%E8%AE%B0/"><i class="iconfont iconleft"></i>关于使用Postman笔记</a>
+    <a href="/2023/09/25/Git/">Git 学习笔记<i class="iconfont iconright"></i></a>
+  </nav>
+
+      </section>
+      
+        <section class="comments">
+  
+    <div class="btn" id="comments-btn">查看评论</div>
+  
+  
+<div id="valine"></div>
+<script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  window.onload = function () {
+    var loadValine = function () {
+      new Valine({
+        el: '#valine',
+        app_id: "YBz2laX5qgCJLxNTpC7akJuU-gzGzoHsz",
+        app_key: "lHPh4E9b3LU0DWfqppMWL7Tt",
+        placeholder: "O(∩_∩)O~欢迎留言~v😍！",
+        avatar: "wavatar",
+        pageSize: "10",
+        lang: "zh-CN",
+      });
+    }
+    if ( true ) {
+      $("#comments-btn").on("click", function () {
+        $(this).hide();
+        loadValine();
+      });
+    } else {
+      loadValine();
+    }
+  };
+</script>
+
+</section>
+      
+    </section>
+  </div>
+</article>
+
+</div>
+      <div class="col-xl-3">
+        
+          
+  <aside class="toc-wrap">
+    <h3 class="toc-title">文章目录：</h3>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81npm"><span class="toc-text">一、npm</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AFnpm%EF%BC%9F"><span class="toc-text">1、什么是npm？</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2%E3%80%81%E5%AE%98%E7%BD%91%E5%9C%B0%E5%9D%80"><span class="toc-text">2、官网地址</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3%E3%80%81%E4%B8%AD%E6%96%87%E5%AE%98%E7%BD%91%E5%9C%B0%E5%9D%80"><span class="toc-text">3、中文官网地址</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#4%E3%80%81%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-text">4、使用方法</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81yarn"><span class="toc-text">二、yarn</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1%E3%80%81%E4%BB%80%E4%B9%88yarn%EF%BC%9F"><span class="toc-text">1、什么yarn？</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2%E3%80%81%E5%AE%98%E7%BD%91"><span class="toc-text">2、官网</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3%E3%80%81%E4%B8%AD%E6%96%87%E5%AE%98%E7%BD%91"><span class="toc-text">3、中文官网</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#4%E3%80%81%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95-1"><span class="toc-text">4、使用方法</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81nrm"><span class="toc-text">三、nrm</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AFnrm%EF%BC%9F%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%BD%BF%E7%94%A8nrm%EF%BC%9F"><span class="toc-text">1、什么是nrm？为什么要使用nrm？</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2%E3%80%81%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-text">2、使用方法</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E3%80%81nvm"><span class="toc-text">四、nvm</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AFnvm%EF%BC%9F%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%BD%BF%E7%94%A8nvm%EF%BC%9F"><span class="toc-text">1、什么是nvm？为什么要使用nvm？</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2%E3%80%81%E5%AE%98%E7%BD%91%E5%9C%B0%E5%9D%80-1"><span class="toc-text">2、官网地址</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3%E3%80%81%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-text">3、使用方法</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%85%B6%E5%AE%83%E9%97%AE%E9%A2%98"><span class="toc-text">五、其它问题</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%E3%80%81npx%E3%80%81npm%E3%80%81cnpm%E3%80%81pnpm%E5%8C%BA%E5%88%AB"><span class="toc-text">1、npx、npm、cnpm、pnpm区别</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%E3%80%81npm%E3%80%81nrm%E3%80%81nvm%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8"><span class="toc-text">2、npm、nrm、nvm的安装和使用</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
+  </aside>
+
+        
+      </div>
+    </div>
+  </div>
+</main>
+  
+
+<footer class="footer">
+  <div class="footer-social"><a 
+        href="tencent://message/?Menu=yes&uin=894519210 "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#12B7F5'" 
+        onMouseOut="this.style.color='#88ada6'">
+          <i class="iconfont  iconQQ "></i>
+      </a><a 
+        href="javascript:; "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#09BB07'" 
+        onMouseOut="this.style.color='#88ada6'">
+          <i class="iconfont  iconwechat-fill "></i>
+      </a><a 
+        href="https://www.instagram.com/izhaoo/ "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#DA2E76'" 
+        onMouseOut="this.style.color='#88ada6'">
+          <i class="iconfont  iconinstagram "></i>
+      </a><a 
+        href="https://github.com/zhaoo "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#9f7be1'" 
+        onMouseOut="this.style.color='#88ada6'">
+          <i class="iconfont  icongithub-fill "></i>
+      </a><a 
+        href="mailto:izhaoo@163.com "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color=#FF3B00" 
+        onMouseOut="this.style.color='#88ada6'">
+          <i class="iconfont  iconmail"></i>
+      </a></div>
+  
+    <div class="footer-copyright"><p>Copyright© 2023 建站  |  ZcZjy ( 还没备案喔~！！！ )</p><p>联系我：540507521@qq.com</p><p>关于我：我是ZcZjy</p><p>积少成多，只要学不死就往死里学👀</p><p>喜欢分享，也喜欢交朋友，正在努力钻研java、spring全家桶、前端vue等等技术，梦想成为一名技术大牛</p></div>
+  
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+    <div class="fab fab-like">
+      <i class="iconfont iconheart"></i>
+    </div>
+  
+  
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+  
+    <div class="search">
+  <div class="search-container">
+    <div class="search-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <div class="search-input-wrapper">
+      <i class="search-input-icon iconfont iconsearch"></i>
+      <input class="search-input" type="search" id="search-input" placeholder="Search..." autofocus autocomplete="off"
+        autocorrect="off" autocapitalize="off">
+    </div>
+    <div class="search-output" id="search-output"></div>
+  </div>
+</div>
+  
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+  <script>
+  $.getScript("//cdn.jsdelivr.net/npm/leancloud-storage@4.1.0/dist/av-min.js", () => {
+
+    AV.init({
+      appId: 'YBz2laX5qgCJLxNTpC7akJuU-gzGzoHsz',
+      appKey: 'lHPh4E9b3LU0DWfqppMWL7Tt',
+      serverURLs: 'https://leancloud.cn/',
+    });
+
+    const Counter = AV.Object.extend("Counter");
+    const Like = AV.Object.extend("Like");
+
+    const showCount = (Counter) => {
+      const asyncLimit = new AsyncLimit(2);
+      $(".leancloud-counter").each(async (e) => {
+        const url = $(".leancloud-counter").eq(e).attr('id').trim();
+        const query = new AV.Query("Counter");
+        query.equalTo("words", url);
+        let count = await asyncLimit.run(() => query.count());
+        $(".leancloud-counter").eq(e).text(count ? count : 0);
+      });
+    }
+
+    const addCount = (Counter) => {
+      const url = $(".leancloud-counter").length === 1 ? $(".leancloud-counter").attr('id').trim() : 'https://zuo-junyuan.gitee.io';
+      var query = new Counter;
+      query.save({
+        words: url
+      });
+    }
+
+    const showLike = (Like) => {
+      const asyncLimit = new AsyncLimit(2);
+      $(".leancloud-like").each(async (e) => {
+        const url = $(".leancloud-like").eq(e).attr('id').trim();
+        const query = new AV.Query("Like");
+        query.equalTo("path", url);
+        let count = await asyncLimit.run(() => query.count());
+        $(".leancloud-like").eq(e).text(count ? count : 0);
+      });
+    }
+
+    const addLike = (Like) => {
+      const url = $(".leancloud-like").length === 1 ? $(".leancloud-like").attr('id').trim() : 'https://zuo-junyuan.gitee.io';
+      var query = new Like;
+      query.save({
+        path: url,
+        nickName: 'Anonymous'
+      });
+      $(".leancloud-like").addClass('islike');
+      $(".fab-like").children(".iconfont").removeClass("iconheart").addClass("iconheart-fill").css("color", "#eb3223");
+      ZHAOO.zui.message({ text: '爱你哦~', type: 'success' });
+      setTimeout(() => showLike(Like), 1000);
+    }
+
+    const handleLikeClick = () => {
+      const isLike = $(".leancloud-like").length === 1 && $(".leancloud-like").hasClass('islike') ? true : false;
+      if (isLike) {
+        ZHAOO.zui.message({ text: '小心心不可以收回呢~', type: 'warning' });
+      } else {
+        addLike(Like);
+      }
+    }
+
+    $(function () {
+      addCount(Counter);
+      showCount(Counter);
+      showLike(Like);
+      $(".fab-like").on("click", function () {
+        handleLikeClick();
+      });
+    });
+
+  });
+</script>
+
+
+
+
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+</html>
