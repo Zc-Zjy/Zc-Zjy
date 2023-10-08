@@ -14,7 +14,7 @@
       "realPath": null,
       "excerpt": null,
       "keywords": null,
-      "cover": "/SVN/1.png",
+      "cover": "/assets/cover_background.jpg",
       "content": null,
       "raw": null,
       "categories": [
@@ -41,7 +41,7 @@
       "realPath": null,
       "excerpt": null,
       "keywords": null,
-      "cover": "/Git/1.jpg",
+      "cover": "/assets/cover_background.jpg",
       "content": null,
       "raw": null,
       "categories": [
@@ -68,7 +68,7 @@
       "realPath": null,
       "excerpt": null,
       "keywords": null,
-      "cover": "/%E5%85%B3%E4%BA%8E%E4%BD%BF%E7%94%A8Postman%E7%AC%94%E8%AE%B0/1.jpg",
+      "cover": "/assets/cover_background.jpg",
       "content": null,
       "raw": null,
       "categories": [
@@ -95,7 +95,7 @@
       "realPath": null,
       "excerpt": null,
       "keywords": null,
-      "cover": null,
+      "cover": "/assets/cover_background.jpg",
       "content": null,
       "raw": null,
       "categories": [
@@ -126,7 +126,7 @@
       "realPath": null,
       "excerpt": null,
       "keywords": null,
-      "cover": "/2023/10/04/%E5%85%B3%E4%BA%8ESpring%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/1.jpg",
+      "cover": "/assets/cover_background.jpg",
       "content": null,
       "raw": null,
       "categories": [
@@ -157,7 +157,7 @@
       "realPath": null,
       "excerpt": null,
       "keywords": null,
-      "cover": "/2023/10/07/Java8-stream-%E8%B0%83%E5%BC%8F%E6%96%B9%E6%B3%95/1.png",
+      "cover": "/assets/cover_background.jpg",
       "content": null,
       "raw": null,
       "categories": [
@@ -188,7 +188,7 @@
       "realPath": null,
       "excerpt": null,
       "keywords": null,
-      "cover": null,
+      "cover": "/assets/cover_background.jpg",
       "content": null,
       "raw": null,
       "categories": [
@@ -215,7 +215,7 @@
       "realPath": null,
       "excerpt": null,
       "keywords": null,
-      "cover": "/2023/09/25/IntelliJ-IDEA-2020-3-3-x64%E6%BF%80%E6%B4%BB%E6%96%B9%E6%B3%95/1.jpg",
+      "cover": "/assets/cover_background.jpg",
       "content": null,
       "raw": null,
       "categories": [
