@@ -1,0 +1,721 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" color-mode=light>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Linux学习笔记 - 小Z😊成长录◝( •̀ ω •́ )✧</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  <meta name="keywords" content="ZcZjy,Blogs,Java,Spring,软件开发技术">
+  <meta name="description" content="
+一、目录结构介绍1、[root@localhost ...">
+  <meta name="author" content="ZcZjy">
+  <link rel="icon" href="/images/icons/dog.png" type="image/png" sizes="16x16">
+  <link rel="icon" href="/images/icons/dog.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/images/icons/dog.png" sizes="180x180">
+  <meta rel="mask-icon" href="/images/icons/dog.svg" color="#333333">
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/dog.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+    
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_1445822_p6ry5n7lrr.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+    
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css" name="highlight-style" mode="light">
+
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solarized-dark.min.css" name="highlight-style" mode="dark">
+
+      
+  
+
+  <script>
+	
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      loading: {
+        gif: '/images/theme/loading.gif',
+        lottie: ''
+      },
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: {
+          gif: '/images/theme/loading.gif',
+          lottie: ''
+        }
+      },
+      donate: {
+        enable: true,
+        alipay: '/images/zjyzfb.jpg',
+        wechat: '/images/zjyzanshang.jpg'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: true,
+        always_show: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      },
+      preview: {
+        background: {
+          default: '',
+          api: ''
+        },
+        motto: {
+          default: '励志成为技术大牛的一名小白',
+          typing: true,
+          api: '',
+          data_contents: '["data","content"]'
+        },
+      },
+      qrcode: {
+        enable: false,
+        type: 'url',
+        image: 'https://pic.izhaoo.com/weapp-code.jpg',
+      },
+      toc: {
+        enable: true
+      },
+      scrollbar: {
+        type: 'default'
+      },
+      notification: {
+        enable: false,
+        delay: 4500,
+        list: '',
+        page_white_list: '',
+        page_black_list: ''
+      },
+      search: {
+        enable: true,
+        path: '/search.xml'
+      }
+    }
+	console.log(111111,CONFIG.search)
+  </script>
+
+  
+
+  
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="lock-screen">
+  <div class="loading" id="loading"></div>
+  
+    
+
+
+  <nav class="navbar">
+    <div class="left">
+      
+        <i class="iconfont iconhome j-navbar-back-home"></i>
+      
+      
+      
+        <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+      
+      
+        <i class="iconfont iconsearch j-navbar-search"></i>
+      
+	  <div class="vertical"></div>
+	  <div id="tp-weather-widget" style="margin-left: 15px;padding: 0 10px;border-radius: 20px;"></div>
+	  <div class="vertical"></div>
+	  <div class="ZcZjy" onclick="hitokoto()">ZcZjy：<span id="ZcZjytext" class="ZcZjytext">换一句！~vo(*^＠^*)o</span></div>
+	  <div id="hitokoto" class="hitokoto">
+	    <div id="hitokoto_text" class="hitokoto">今天该说什么呢和φ(*￣0￣)...</div>
+	  </div>
+	  <style>
+	  .vertical {
+		  height: 25px;
+		  border-right: 2px solid grey;
+		  margin-left: 10px;
+		  color: white;
+		  text-shadow: 1px 1px 1px grey,
+		  			  1px 1px 5px grey,
+		  			  1px 1px 10px grey;
+	  }
+	  .dsrBSL {
+		 color: white;
+		 text-shadow: 1px 1px 1px grey,
+		 			  1px 1px 5px grey,
+		 			  1px 1px 10px grey;
+		  font-size: 15px;
+	  }  
+	  .navbar .iconfont {
+		  color: #dddddd;
+		  text-shadow: 1px 1px 1px grey;
+	  }
+	  .ZcZjy {
+		 position: relative;
+		 display: inline-block;
+		 margin-left: 15px;
+		 color: white;
+		 text-shadow: 1px 1px 1px grey,
+		 			  1px 1px 5px grey,
+		 			  1px 1px 10px grey;
+	  }
+	  .ZcZjytext {
+		  font-size: 10px;
+		  width: 150px;
+	  }
+	  .ZcZjy .ZcZjytext {
+	  visibility: hidden;
+	  color: white;
+	  text-align: center;
+	  border-radius: 10px;
+	  padding: 5px;
+	  position: absolute;
+	  z-index: 1;
+	  top: 105%;
+	  left: 50%;
+	  transform: translateX(-50%);
+	  opacity: 0;
+	  transition: opacity 0.3s;
+	  }
+	  .hitokoto {
+		  font-weight: lighter;
+		  margin-left: 5px;
+		  color: white;
+		  text-shadow: 1px 1px 1px grey,
+						1px 1px 5px grey,
+						1px 1px 10px grey;
+	  }
+	  .ZcZjy:hover .ZcZjytext {
+	  visibility: visible;
+	  opacity: 1;
+	  }
+	  .ZcZjy:hover, .hitokoto:hover {
+		  
+		  cursor: pointer;
+		  font-size: 18px;
+		  text-shadow: 0 0 0 10px #dddddd,
+					   0 0 0 20px #dddddd,
+					   0 0 0 40px #dddddd,
+					   0 0 0 80px #dddddd,
+					   0 0 0 120px #dddddd,
+					   0 0 0 160px #dddddd;
+	  }
+	  .hitokoto {
+		position: relative;
+		overflow: hidden;
+		border-bottom: 1px solid white;
+	  }
+	  .hitokoto::after {
+		content: "";
+		position: absolute;
+		right: 0px;
+		height: 32px;
+		border-right: 2px solid #dddddd;
+		animation: showInfinite 0.5s infinite both;
+	  }
+	  @keyframes showInfinite {
+	    0% {
+	      opacity: 1;
+	    }
+	    100% {
+	      opacity: 0;
+	    }
+	  }
+	  </style>
+	  <script>
+
+	  
+	  function hitokoto () {
+			$.ajax({
+				url: "https://v1.hitokoto.cn/",
+				type: 'GET',
+				dataType: 'json',
+				success: function(res) {
+					printHitokoto(res.hitokoto);
+				}
+			})
+		}
+		
+		function printHitokoto (text) {
+			var i = 0;
+			var timer = setInterval(function() {
+				if (i >= text.length) {
+					clearInterval(timer);
+				}
+				$("#hitokoto").text(text.slice(0, i++));
+			}, 100);
+		}
+		
+		function ZcZjytext() {
+		  //停止执行间隔函数
+		  if (setIntervalFun != null) {
+		   	clearInterval(setIntervalFun);
+			setIntervalFun = null;
+			$("#ZcZjytext").text("说话！~vo(*^＠^*)o");
+		  }else {
+			  setIntervalFun = setInterval("hitokoto()", 7000);
+			  $("#ZcZjytext").text("住嘴！~v`(*>﹏<*)′");
+		  }
+		}
+		(function(a,h,g,f,e,d,c,b){b=function(){d=h.createElement(g);c=h.getElementsByTagName(g)[0];d.src=e;d.charset="utf-8";d.async=1;c.parentNode.insertBefore(d,c)};a["SeniverseWeatherWidgetObject"]=f;a[f]||(a[f]=function(){(a[f].q=a[f].q||[]).push(arguments)});a[f].l=+new Date();if(a.attachEvent){a.attachEvent("onload",b)}else{a.addEventListener("load",b,false)}}(window,document,"script","SeniverseWeatherWidget","//cdn.sencdn.com/widget2/static/js/bundle.js?t="+parseInt((new Date().getTime() / 100000000).toString(),10)));
+		window.SeniverseWeatherWidget('show', {
+		  flavor: "slim",
+		  location: "WX4FBXXFKE4F",
+		  geolocation: true,
+		  language: "zh-Hans",
+		  unit: "c",
+		  theme: "auto",
+		  token: "12b1be52-c77a-49de-99f9-dcb0fd324d19",
+		  hover: "enabled",
+		  container: "tp-weather-widget"
+		});
+	  </script>
+    </div>
+    <div class="center">
+		Linux学习笔记
+	</div>
+    <div class="right">
+      <i class="iconfont iconmenu j-navbar-menu"></i>
+    </div>
+    
+  </nav>
+
+  
+  
+
+<nav class="menu">
+  <div class="menu-container">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content"><li class="menu-item">		
+        <a href="/ " class="underline "> 首页</a>
+      </li><li class="menu-item">		
+        <a href="/tags/ " class="underline "> 标签</a>
+      </li><li class="menu-item">		
+        <a href="/categories/ " class="underline "> 分类</a>
+      </li></ul>
+    
+      <div class="menu-copyright"><p>Copyright© 2023 建站  |  ZcZjy ( 还没备案喔~！！！ )</p><p>联系我：540507521@qq.com</p><p>关于我：我是ZcZjy</p><p>积少成多，只要学不死就往死里学👀</p><p>喜欢分享，也喜欢交朋友，正在努力钻研java、spring全家桶、前端vue等等技术，梦想成为一名技术大牛</p></div>
+    
+  </div>
+</nav>
+  <main id="main">
+  <div class="article-wrap">
+    <div class="row container">
+      <div class="col-xl-3"></div>
+      <div class="col-xl-6"><article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="/images/text_cover_background/cover_background.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">Linux学习笔记</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>十月 11, 2023</span>
+      
+        <span class="post-info-item">
+          <i class="iconfont iconeye"></i><span id="/2023/10/11/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="leancloud-counter" data-flag-title="Linux学习笔记"></span>
+        </span>
+        <span class="post-info-item">
+          <i class="iconfont iconheart"></i><span id="/2023/10/11/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="leancloud-like" data-flag-title="Linux学习笔记"></span>
+        </span>
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>4776</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        
+        <hr>
+<h1 id="一、目录结构介绍"><a href="#一、目录结构介绍" class="headerlink" title="一、目录结构介绍"></a>一、目录结构介绍</h1><h3 id="1、-root-localhost-讲解说明"><a href="#1、-root-localhost-讲解说明" class="headerlink" title="1、[root@localhost ~]#  讲解说明"></a>1、[root@localhost ~]#  讲解说明</h3><p>（1）<code>root</code>：代表当前登录的用户，在Linux中管理员账户是<code>root</code>。<br>（2）<code>localhost</code>：当前计算机主机名。<br>（3）<code>~</code>：当前所在家目录。<br>（4）<code>/</code>：当前所在根目录。<br>（5）<code>#</code>：超级用户提示符。<br>（6）<code>$</code>：普通用户的提示符（<code>$</code>钱的符号，普通用户就是俗人，俗人就爱钱）。</p>
+<h3 id="2、目录结构说明"><a href="#2、目录结构说明" class="headerlink" title="2、目录结构说明"></a>2、目录结构说明</h3><p>（1）<code>/bin</code>：bin是Binary的缩写，这个目录存放着最常用的命令。<br>（2）<code>/boot</code>：这里存放的是启动Linux时使用的一些核心文件，包括一些连接文件以及镜像文件（不要随便动）。<br>（3）<code>/dev</code>：dev是Device（设备）的缩写，存放的是Linux的外部设备，在Linux中访问设备的方式和访问文件的方式是相同的。<br>（4）<code>/etc</code>：这个目录用来存放所有的系统管理所需要的配置文件和子目录。<br>（5）<code>/home</code>：用户的主目录，在Linux中，每个用户都有一个自己的目录，一般该目录名是以用户的账户命名的。<br>（6）<code>/lib</code>：这个目录里存放着系统最基本的动态连接共享库，其作用类似于Windows里的dll文件。<br>（7）<code>/lost+found</code>：这个目录一般情况下是空的，当系统非法关机后，这里就存放了一些文件。<br>（8）<code>/media</code>：Linux系统会自动识别一些设备，例如U盘、光驱等等，当识别后，Linux会把识别的设备挂载到这个目录下。<br>（9）<code>/mnt</code>：系统提供该目录是为了让用户临时挂在别的文件系统的，我们可以将光驱挂载在<code>/mnt</code>上，然后进入该目录就可以查看光驱里的内容了。<br>（10）<code>/opt</code>：这是给主机额外安装软件所摆放的目录，比如你安装一个oracle数据库，就可以放在这个目录下，默认是空的。<br>（11）<code>/proc</code>：这个目录是一个虚拟的目录，它是系统内存的映射，我们可以通过直接访问这个目录来获取系统信息。<br>（12）<code>/root</code>：该目录为系统管理员，也称作超级权限者的用户主目录。<br>（13）<code>/sbin</code>：s就是Super User的意思，这里存放的是系统管理员使用的系统管理程序。<br>（14）<code>/srv</code>：该目录存放一些服务启动之后需要提取的数据。<br>（15）<code>/sys</code>：这是Linux2.6内核的一个很大的变化，该目录下安装了2.6内核中新出现的一个文件系统sysfs。<br>（16）<code>/tmp</code>：这个目录是用来存放一些临时文件的。<br>（17）<code>/usr</code>：这个一个非常重要的目录，用户的很多应用程序和文件都放在这个目录下，类似于Windows下的program files目录。<br>（18）<code>/usr/bin</code>：系统用户使用的应用程序。</p>
+<br/>
+
+<hr>
+<br/>
+
+<h1 id="二、常用的Linux命令"><a href="#二、常用的Linux命令" class="headerlink" title="二、常用的Linux命令"></a>二、常用的Linux命令</h1><h3 id="1、cd（改变目录）"><a href="#1、cd（改变目录）" class="headerlink" title="1、cd（改变目录）"></a>1、cd（改变目录）</h3><p>（1）<code>cd /</code>：进入根目录；<br>（2）<code>cd /home/sharplee/creatfile</code>：进入到<code>home</code>文件夹下的<code>sharplee</code>文件夹下的<code>creatfile</code>目录；<br>（3）<code>cd ..</code>：回退到上一个目录，直接cd进入默认目录。特别说明：cd 空格 .. 才可以。</p>
+<h3 id="2、pwd（显示当前所在的目录路径）"><a href="#2、pwd（显示当前所在的目录路径）" class="headerlink" title="2、pwd（显示当前所在的目录路径）"></a>2、pwd（显示当前所在的目录路径）</h3><h3 id="3、ls（列出当前目录的所有文件）"><a href="#3、ls（列出当前目录的所有文件）" class="headerlink" title="3、ls（列出当前目录的所有文件）"></a>3、ls（列出当前目录的所有文件）</h3><p>（1）<code>ls</code>：列出当前目录中的所有文件；<br>（2）<code>ll</code>：比<code>ls</code>列出的内容更详细；<br>（3）<code>ls -a</code>：列出当前目录中所有文件包括隐藏文件；<br>（4）<code>ls -l</code>：同<code>ll</code>。</p>
+<h3 id="4、touch（新建文件）"><a href="#4、touch（新建文件）" class="headerlink" title="4、touch（新建文件）"></a>4、touch（新建文件）</h3><p><code>touch</code>：新建一个文件，如：<code>touch index.js</code>，就会在当前目录下新建一个index.js文件。（如果文件已经存在，则只会修改文件的当前时间）</p>
+<h3 id="5、rm（删除文件）"><a href="#5、rm（删除文件）" class="headerlink" title="5、rm（删除文件）"></a>5、rm（删除文件）</h3><p><strong>常用后缀选项：</strong>  </p>
+<ul>
+<li><code>-f</code>：强制删除文件，忽略不存在的文件和不可写的文件，不会出现警告提示；  </li>
+<li><code>-d(--dir)</code>：删除空目录；  </li>
+<li><code>-i</code>：交互式地询问是否删除每个文件，如果要删除多个文件，rm将询问是否确认删除每个文件；  </li>
+<li><code>-I</code>：在删除超过三个文件或者递归删除前要求确认，此选项比-i 提示内容更少，但同样可以阻止大多数错误发生；  </li>
+<li><code>-r</code>：递归地删除目录及其内容，用于删除非空目录；  </li>
+<li><code>-v</code>：显示详细输出，列出每个删除的文件名；</li>
+</ul>
+<p><strong>使用例子：</strong><br>（1）<code>rm index.js</code>：删除index.js文件；<br>（2）<code>rm index1.js index2.js</code>：删除index1.js和index2.js文件；<br>（3）<code>rm -f index.js</code>：强制删除index.js文件；<br>（4）<code>rm -r src</code>：删除src目录（特别说明：一般不要使用rm，特别是rm -rf 命令，一定不能使用）；<br>（5）<code>rmdir test</code>：删除test文件夹；<br>（6）<code>rmdir -p test/test/test.txt</code>：递归删除。</p>
+<h3 id="6、mkdir（新建目录）"><a href="#6、mkdir（新建目录）" class="headerlink" title="6、mkdir（新建目录）"></a>6、mkdir（新建目录）</h3><p>（1）<code>mkdir test</code>：新建test文件夹；<br>（2）<code>mkdir -p test/test/test</code>：递归创建。</p>
+<h3 id="7、mv（移动文件）"><a href="#7、mv（移动文件）" class="headerlink" title="7、mv（移动文件）"></a>7、mv（移动文件）</h3><p><strong>常用后缀选项：</strong>  </p>
+<ul>
+<li><code>-b</code>：当目标文件存在，先进行备份在覆盖；</li>
+<li><code>-f</code>：强制覆盖，如果目标文件已经存在，则不询问，直接强制覆盖；</li>
+<li><code>-i</code>：交互移动，如果目标文件已经存在，则会询问用户是否覆盖（默认选项）；</li>
+<li><code>-n</code>：如果目标文件已经存在，则不会覆盖移动，而且不询问用户；</li>
+<li><code>-v</code>：显示文件或目录的移动过程；</li>
+<li><code>-u</code>：若目标文件已经存在，但两者相比，源文件更新，则会对目标文件进行升级；</li>
+</ul>
+<p><strong>常用示例：</strong><br>（1）<code>mv index.js src/</code>：将index.js移动到src目录下（文件夹用 文件夹名 + <code>/</code>的方式表示）；<br>（2）<code>mv -b a/aa b/</code>：将a目录下的aa文件移动到b目录中，因为b目录已经存在aa文件，所以b目录先备份一份b目录下的aa文件<code>aa~</code>，再将a目录下的aa文件移动到b目录；<br>（3）<code>mv -f index.js b/</code>：强制覆盖，不管b目录下有没有index.js，都将index.js移动到b目录下，如果b目录存在index.js，就覆盖；<br>（4）<code>mv a b</code>：将a文件名改为b；  </p>
+<h3 id="8、reset（初始化终端）"><a href="#8、reset（初始化终端）" class="headerlink" title="8、reset（初始化终端）"></a>8、reset（初始化终端）</h3><p><code>reset</code>：初始化终端；</p>
+<h3 id="9、clear（清屏）"><a href="#9、clear（清屏）" class="headerlink" title="9、clear（清屏）"></a>9、clear（清屏）</h3><p><code>clear</code>：清屏；</p>
+<h3 id="10、history（查看命令历史）"><a href="#10、history（查看命令历史）" class="headerlink" title="10、history（查看命令历史）"></a>10、history（查看命令历史）</h3><p><code>history</code>：查看命令历史；</p>
+<h3 id="11、help（帮助）"><a href="#11、help（帮助）" class="headerlink" title="11、help（帮助）"></a>11、help（帮助）</h3><p><code>help</code>：帮助；</p>
+<h3 id="12、exit（退出）"><a href="#12、exit（退出）" class="headerlink" title="12、exit（退出）"></a>12、exit（退出）</h3><p><code>exit</code>：帮助；</p>
+<h3 id="13、-（注释）"><a href="#13、-（注释）" class="headerlink" title="13、#（注释）"></a>13、#（注释）</h3><h3 id="14、cat（查看文件内容）"><a href="#14、cat（查看文件内容）" class="headerlink" title="14、cat（查看文件内容）"></a>14、cat（查看文件内容）</h3><p>（1）<code>cat test.txt</code>：查看test文件的内容；<br>（2）<code>cat &gt; test.txt</code>：新建一个test文件，按下回车之后，向test文件里输出保存内容，在按<code>ctr + d</code>来保存退出；<br>（3）<code>cat test1.txt test2.txt</code>：查看test1和test2文件的内容；<br>（4）<code>cat test1.txt &gt; test2.txt</code>：将test1文件内容备份到test2文件中；<br>（5）<code>cat test1.txt test2.txt &gt; test3.txt</code>：将test1和test2文件内容备份到test3文件中；<br>（6）<code>tac test.txt</code>：将test文件内容反过来查看；<br>（7）<code>cat test1.txt &gt;&gt; test2.txt</code>：将test1文件内容添加到test2文件内容末尾；<br>（8）<code>cat &gt;&gt; test.txt</code>：在终端输入内容到test.txt末尾，按<code>ctr + d</code>来保存退出；<br>（9）<code>cat -n test.txt</code>：查看test文件内容，并显示行号；<br>（10）<code>cat /etc/os-release</code>：查看当前系统版本；</p>
+<h3 id="15、查看系统内核"><a href="#15、查看系统内核" class="headerlink" title="15、查看系统内核"></a>15、查看系统内核</h3><p><code>uname -r</code>：查看系统内核；</p>
+<h3 id="16、将数据从内存同步到硬盘"><a href="#16、将数据从内存同步到硬盘" class="headerlink" title="16、将数据从内存同步到硬盘"></a>16、将数据从内存同步到硬盘</h3><p><code>sync</code>：将数据从内存同步到硬盘；</p>
+<h3 id="17、关机"><a href="#17、关机" class="headerlink" title="17、关机"></a>17、关机</h3><p>（1）<code>half</code>：立刻关机；<br>（2）<code>shutdown -h now</code>：立刻关机；<br>（3）<code>shutdown -h 10</code>：10分钟后关机；<br>（4）<code>shutdown -h 20:30</code>：20：30的时候关机；<br>（5）<code>shutdown -h +30 &#39;系统将在30分钟后关机&#39;</code>：30分钟后关机，同时向在线用户发送警告消息；</p>
+<h3 id="18、重启"><a href="#18、重启" class="headerlink" title="18、重启"></a>18、重启</h3><p><code>reboot</code>：重启；</p>
+<h3 id="19、cp（复制粘贴）"><a href="#19、cp（复制粘贴）" class="headerlink" title="19、cp（复制粘贴）"></a>19、cp（复制粘贴）</h3><p><code>cp 【复制的文件名】 【要粘贴到的文件夹】</code></p>
+<h3 id="20、chmod（更改文件权限）"><a href="#20、chmod（更改文件权限）" class="headerlink" title="20、chmod（更改文件权限）"></a>20、chmod（更改文件权限）</h3><p><code>chmod 777 文件名</code>：更改文件权限为777，相关知识查看下面第三大点；</p>
+<h3 id="21、man（查看命令使用文档）"><a href="#21、man（查看命令使用文档）" class="headerlink" title="21、man（查看命令使用文档）"></a>21、man（查看命令使用文档）</h3><p><code>man cd</code>：查看cd命令的使用文档；</p>
+<h3 id="22、vim（修改文件内容）"><a href="#22、vim（修改文件内容）" class="headerlink" title="22、vim（修改文件内容）"></a>22、vim（修改文件内容）</h3><p><code>vim test.txt</code>：修改test文件内容，进入文件后按键盘中的<code>i</code>或者<code>Insert</code>键，就可以输入内容了，然后按<code>Esc</code>退出输入模式，敲入<code>:wq</code>表示保存退出，<code>:q</code>仅退出不保存，显示行号：<code>:set nu</code>，不显示行号：<code>set nonu</code>；</p>
+<h3 id="23、hostname（查看主机名）"><a href="#23、hostname（查看主机名）" class="headerlink" title="23、hostname（查看主机名）"></a>23、hostname（查看主机名）</h3><p><code>hostname 【要修改成的新主机名】</code>：修改主机名；</p>
+<h3 id="24、ps（查看当前系统正在运行的进程）"><a href="#24、ps（查看当前系统正在运行的进程）" class="headerlink" title="24、ps（查看当前系统正在运行的进程）"></a>24、ps（查看当前系统正在运行的进程）</h3><p>（1）<code>ps -a</code>：显示当前终端运行的所有进程<br>（2）<code>ps -u</code>：查看当前以用户登录的所有进程<br>（3）<code>ps -x</code>：显示后台运行进程的参数<br>（4）<code>ps -aux</code>：查看所有的进程<br>（5）<code>grep</code>：查找文件中符合条件的信息<br>（6）<code>ps -aux|grep mysql</code>：查找所有进程，过滤出mysql进程（查找出mysql进程）<br>（7）<code>rpm -qa | grep postgres</code>：查看当前服务器是否已安装PostgreSQL  </p>
+<h3 id="25、结束进程"><a href="#25、结束进程" class="headerlink" title="25、结束进程"></a>25、结束进程</h3><p><code>kill -9 【进程id】</code>：结束进程；</p>
+<h3 id="26、解压压缩包"><a href="#26、解压压缩包" class="headerlink" title="26、解压压缩包"></a>26、解压压缩包</h3><p><code>tar -zxvf 【压缩包名】</code>：解压压缩包；</p>
+<h3 id="27、查看进程状态"><a href="#27、查看进程状态" class="headerlink" title="27、查看进程状态"></a>27、查看进程状态</h3><p><code>systemctl status postgresql.service</code>：查看postgresql服务器进程状态；</p>
+<h3 id="28、查看当前登录的用户名"><a href="#28、查看当前登录的用户名" class="headerlink" title="28、查看当前登录的用户名"></a>28、查看当前登录的用户名</h3><p><code>whoami</code>：查看当前登录的用户名；</p>
+<h3 id="29、查看系统中的所有用户"><a href="#29、查看系统中的所有用户" class="headerlink" title="29、查看系统中的所有用户"></a>29、查看系统中的所有用户</h3><p>（1）<code>cat /etc/passwd</code>：查看系统中的所有用户；<br>（2）<code>getent passwd</code>：该命令将显示系统中所有用户的用户名、用户ID、用户所属组ID、用户家目录等信息；  </p>
+<h3 id="30、启动、停止服务"><a href="#30、启动、停止服务" class="headerlink" title="30、启动、停止服务"></a>30、启动、停止服务</h3><p>（1）启动某个服务：<code>systemctl start 【服务名】</code><br>（2）停止某个服务：<code>systemctl stop 【服务名】</code><br>（3）重启某个服务：<code>systemctl restart 【服务名】</code><br>（4）查看一个服务的状态：<code>systemctl status 【服务名】</code><br>（5）开机时启用一个服务：<code>systemctl enable 【服务名】</code><br>（6）开机时关闭一个服务：<code>systemctl disable 【服务名】</code><br>（7）查看服务是否开机启动：<code>systemctl is-enabled 【服务名】</code>  </p>
+<h3 id="31、防火墙端口"><a href="#31、防火墙端口" class="headerlink" title="31、防火墙端口"></a>31、防火墙端口</h3><p>（1）增加防火墙端口号（端口范围 4400-4600）：<code>firewall-cmd --zone=public --add-port=4400-4600/udp --permanen</code><br>（2）指定端口 4369：<code>firewall-cmd --zone=public --add-port=4369/udp --permanen</code>，出现：<code>Warning: ALREADY_ENABLED: 4369:tcp</code>（说明4369端口通过成功）<br>（3）关闭指定端口：<code>firewall-cmd --zone=public --remove-port=80/tcp --permanent</code><br>（4）查看通过的端口：<code>firewall-cmd --zone=public --list-ports</code></p>
+<br/>
+
+<hr>
+<br/>
+
+<h1 id="三、权限说明"><a href="#三、权限说明" class="headerlink" title="三、权限说明"></a>三、权限说明</h1><img src="/2023/10/11/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Linux1.jpg" class="">
+<p>1、<code>drwxr-xr-x</code>说明：<br>（1）第一个字母表示：<code>d 文件夹，- 文件，l 文档</code><br>（2）后面9个字母，三个为一组<code>rwx</code>，<code>r</code>可读，<code>w</code>可写，<code>x</code>可执行，<code>-</code>没有此权限<br>（3）<code>r</code>：4，<code>w</code>：2，<code>x</code>：1</p>
+
+      </section>
+      <section class="extra">
+        
+          <ul class="copyright">
+  
+    <li><strong>本文作者：</strong>ZcZjy</li>
+    <li><strong>本文链接：</strong><a href="https://zuo-junyuan.gitee.io/2023/10/11/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html" title="https:&#x2F;&#x2F;zuo-junyuan.gitee.io&#x2F;2023&#x2F;10&#x2F;11&#x2F;Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0&#x2F;index.html">https:&#x2F;&#x2F;zuo-junyuan.gitee.io&#x2F;2023&#x2F;10&#x2F;11&#x2F;Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0&#x2F;index.html</a></li>
+    <li><strong>版权声明：</strong>本博客所有文章均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" title="BY-NC-SA" target="_blank" rel="noopener">BY-NC-SA</a> 许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+          <section class="donate">
+  <div id="qrcode-donate">
+    <img   class="lazyload" data-original="/images/zjyzfb.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+        
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">Linux学习笔记</a></li></ul> 
+
+        
+  <nav class="nav">
+    <a href="/2023/10/12/Mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="iconfont iconleft"></i>Mysql数据库学习笔记</a>
+    <a href="/2023/10/09/%E5%85%B3%E4%BA%8EspringMVC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">关于springMVC学习笔记<i class="iconfont iconright"></i></a>
+  </nav>
+
+      </section>
+      
+        <section class="comments">
+  
+    <div class="btn" id="comments-btn">查看评论</div>
+  
+  
+<div id="valine"></div>
+<script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  window.onload = function () {
+    var loadValine = function () {
+      new Valine({
+        el: '#valine',
+        app_id: "YBz2laX5qgCJLxNTpC7akJuU-gzGzoHsz",
+        app_key: "lHPh4E9b3LU0DWfqppMWL7Tt",
+        placeholder: "O(∩_∩)O~欢迎留言~v😍！",
+        avatar: "wavatar",
+        pageSize: "10",
+        lang: "zh-CN",
+      });
+    }
+    if ( true ) {
+      $("#comments-btn").on("click", function () {
+        $(this).hide();
+        loadValine();
+      });
+    } else {
+      loadValine();
+    }
+  };
+</script>
+
+</section>
+      
+    </section>
+  </div>
+</article>
+
+</div>
+      <div class="col-xl-3">
+        
+          
+  <aside class="toc-wrap">
+    <h3 class="toc-title">文章目录：</h3>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%E4%BB%8B%E7%BB%8D"><span class="toc-text">一、目录结构介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81-root-localhost-%E8%AE%B2%E8%A7%A3%E8%AF%B4%E6%98%8E"><span class="toc-text">1、[root@localhost ~]#  讲解说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%E8%AF%B4%E6%98%8E"><span class="toc-text">2、目录结构说明</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%B8%B8%E7%94%A8%E7%9A%84Linux%E5%91%BD%E4%BB%A4"><span class="toc-text">二、常用的Linux命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81cd%EF%BC%88%E6%94%B9%E5%8F%98%E7%9B%AE%E5%BD%95%EF%BC%89"><span class="toc-text">1、cd（改变目录）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81pwd%EF%BC%88%E6%98%BE%E7%A4%BA%E5%BD%93%E5%89%8D%E6%89%80%E5%9C%A8%E7%9A%84%E7%9B%AE%E5%BD%95%E8%B7%AF%E5%BE%84%EF%BC%89"><span class="toc-text">2、pwd（显示当前所在的目录路径）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81ls%EF%BC%88%E5%88%97%E5%87%BA%E5%BD%93%E5%89%8D%E7%9B%AE%E5%BD%95%E7%9A%84%E6%89%80%E6%9C%89%E6%96%87%E4%BB%B6%EF%BC%89"><span class="toc-text">3、ls（列出当前目录的所有文件）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81touch%EF%BC%88%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%EF%BC%89"><span class="toc-text">4、touch（新建文件）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E3%80%81rm%EF%BC%88%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%EF%BC%89"><span class="toc-text">5、rm（删除文件）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6%E3%80%81mkdir%EF%BC%88%E6%96%B0%E5%BB%BA%E7%9B%AE%E5%BD%95%EF%BC%89"><span class="toc-text">6、mkdir（新建目录）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7%E3%80%81mv%EF%BC%88%E7%A7%BB%E5%8A%A8%E6%96%87%E4%BB%B6%EF%BC%89"><span class="toc-text">7、mv（移动文件）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8%E3%80%81reset%EF%BC%88%E5%88%9D%E5%A7%8B%E5%8C%96%E7%BB%88%E7%AB%AF%EF%BC%89"><span class="toc-text">8、reset（初始化终端）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9%E3%80%81clear%EF%BC%88%E6%B8%85%E5%B1%8F%EF%BC%89"><span class="toc-text">9、clear（清屏）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10%E3%80%81history%EF%BC%88%E6%9F%A5%E7%9C%8B%E5%91%BD%E4%BB%A4%E5%8E%86%E5%8F%B2%EF%BC%89"><span class="toc-text">10、history（查看命令历史）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11%E3%80%81help%EF%BC%88%E5%B8%AE%E5%8A%A9%EF%BC%89"><span class="toc-text">11、help（帮助）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12%E3%80%81exit%EF%BC%88%E9%80%80%E5%87%BA%EF%BC%89"><span class="toc-text">12、exit（退出）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13%E3%80%81-%EF%BC%88%E6%B3%A8%E9%87%8A%EF%BC%89"><span class="toc-text">13、#（注释）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14%E3%80%81cat%EF%BC%88%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9%EF%BC%89"><span class="toc-text">14、cat（查看文件内容）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#15%E3%80%81%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E5%86%85%E6%A0%B8"><span class="toc-text">15、查看系统内核</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#16%E3%80%81%E5%B0%86%E6%95%B0%E6%8D%AE%E4%BB%8E%E5%86%85%E5%AD%98%E5%90%8C%E6%AD%A5%E5%88%B0%E7%A1%AC%E7%9B%98"><span class="toc-text">16、将数据从内存同步到硬盘</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#17%E3%80%81%E5%85%B3%E6%9C%BA"><span class="toc-text">17、关机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#18%E3%80%81%E9%87%8D%E5%90%AF"><span class="toc-text">18、重启</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#19%E3%80%81cp%EF%BC%88%E5%A4%8D%E5%88%B6%E7%B2%98%E8%B4%B4%EF%BC%89"><span class="toc-text">19、cp（复制粘贴）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#20%E3%80%81chmod%EF%BC%88%E6%9B%B4%E6%94%B9%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%EF%BC%89"><span class="toc-text">20、chmod（更改文件权限）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#21%E3%80%81man%EF%BC%88%E6%9F%A5%E7%9C%8B%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3%EF%BC%89"><span class="toc-text">21、man（查看命令使用文档）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#22%E3%80%81vim%EF%BC%88%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9%EF%BC%89"><span class="toc-text">22、vim（修改文件内容）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#23%E3%80%81hostname%EF%BC%88%E6%9F%A5%E7%9C%8B%E4%B8%BB%E6%9C%BA%E5%90%8D%EF%BC%89"><span class="toc-text">23、hostname（查看主机名）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#24%E3%80%81ps%EF%BC%88%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E7%B3%BB%E7%BB%9F%E6%AD%A3%E5%9C%A8%E8%BF%90%E8%A1%8C%E7%9A%84%E8%BF%9B%E7%A8%8B%EF%BC%89"><span class="toc-text">24、ps（查看当前系统正在运行的进程）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#25%E3%80%81%E7%BB%93%E6%9D%9F%E8%BF%9B%E7%A8%8B"><span class="toc-text">25、结束进程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#26%E3%80%81%E8%A7%A3%E5%8E%8B%E5%8E%8B%E7%BC%A9%E5%8C%85"><span class="toc-text">26、解压压缩包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#27%E3%80%81%E6%9F%A5%E7%9C%8B%E8%BF%9B%E7%A8%8B%E7%8A%B6%E6%80%81"><span class="toc-text">27、查看进程状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#28%E3%80%81%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E7%99%BB%E5%BD%95%E7%9A%84%E7%94%A8%E6%88%B7%E5%90%8D"><span class="toc-text">28、查看当前登录的用户名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#29%E3%80%81%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84%E6%89%80%E6%9C%89%E7%94%A8%E6%88%B7"><span class="toc-text">29、查看系统中的所有用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#30%E3%80%81%E5%90%AF%E5%8A%A8%E3%80%81%E5%81%9C%E6%AD%A2%E6%9C%8D%E5%8A%A1"><span class="toc-text">30、启动、停止服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#31%E3%80%81%E9%98%B2%E7%81%AB%E5%A2%99%E7%AB%AF%E5%8F%A3"><span class="toc-text">31、防火墙端口</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%9D%83%E9%99%90%E8%AF%B4%E6%98%8E"><span class="toc-text">三、权限说明</span></a></li></ol>
+  </aside>
+
+        
+      </div>
+    </div>
+  </div>
+</main>
+  
+
+<footer class="footer">
+  <div class="footer-social"><a 
+        href="tencent://message/?Menu=yes&uin=894519210 "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#12B7F5'" 
+        onMouseOut="this.style.color='#88ada6'">
+          <i class="iconfont  iconQQ "></i>
+      </a><a 
+        href="javascript:; "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#09BB07'" 
+        onMouseOut="this.style.color='#88ada6'">
+          <i class="iconfont  iconwechat-fill "></i>
+      </a><a 
+        href="https://www.instagram.com/izhaoo/ "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#DA2E76'" 
+        onMouseOut="this.style.color='#88ada6'">
+          <i class="iconfont  iconinstagram "></i>
+      </a><a 
+        href="https://github.com/zhaoo "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#9f7be1'" 
+        onMouseOut="this.style.color='#88ada6'">
+          <i class="iconfont  icongithub-fill "></i>
+      </a><a 
+        href="mailto:izhaoo@163.com "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color=#FF3B00" 
+        onMouseOut="this.style.color='#88ada6'">
+          <i class="iconfont  iconmail"></i>
+      </a></div>
+  
+    <div class="footer-copyright"><p>Copyright© 2023 建站  |  ZcZjy ( 还没备案喔~！！！ )</p><p>联系我：540507521@qq.com</p><p>关于我：我是ZcZjy</p><p>积少成多，只要学不死就往死里学👀</p><p>喜欢分享，也喜欢交朋友，正在努力钻研java、spring全家桶、前端vue等等技术，梦想成为一名技术大牛</p></div>
+  
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+    <div class="fab fab-like">
+      <i class="iconfont iconheart"></i>
+    </div>
+  
+  
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+  
+    <div class="search">
+  <div class="search-container">
+    <div class="search-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <div class="search-input-wrapper">
+      <i class="search-input-icon iconfont iconsearch"></i>
+      <input class="search-input" type="search" id="search-input" placeholder="Search..." autofocus autocomplete="off"
+        autocorrect="off" autocapitalize="off">
+    </div>
+    <div class="search-output" id="search-output"></div>
+  </div>
+</div>
+  
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+  <script>
+  $.getScript("//cdn.jsdelivr.net/npm/leancloud-storage@4.1.0/dist/av-min.js", () => {
+
+    AV.init({
+      appId: 'YBz2laX5qgCJLxNTpC7akJuU-gzGzoHsz',
+      appKey: 'lHPh4E9b3LU0DWfqppMWL7Tt',
+      serverURLs: 'https://leancloud.cn/',
+    });
+
+    const Counter = AV.Object.extend("Counter");
+    const Like = AV.Object.extend("Like");
+
+    const showCount = (Counter) => {
+      const asyncLimit = new AsyncLimit(2);
+      $(".leancloud-counter").each(async (e) => {
+        const url = $(".leancloud-counter").eq(e).attr('id').trim();
+        const query = new AV.Query("Counter");
+        query.equalTo("words", url);
+        let count = await asyncLimit.run(() => query.count());
+        $(".leancloud-counter").eq(e).text(count ? count : 0);
+      });
+    }
+
+    const addCount = (Counter) => {
+      const url = $(".leancloud-counter").length === 1 ? $(".leancloud-counter").attr('id').trim() : 'https://zuo-junyuan.gitee.io';
+      var query = new Counter;
+      query.save({
+        words: url
+      });
+    }
+
+    const showLike = (Like) => {
+      const asyncLimit = new AsyncLimit(2);
+      $(".leancloud-like").each(async (e) => {
+        const url = $(".leancloud-like").eq(e).attr('id').trim();
+        const query = new AV.Query("Like");
+        query.equalTo("path", url);
+        let count = await asyncLimit.run(() => query.count());
+        $(".leancloud-like").eq(e).text(count ? count : 0);
+      });
+    }
+
+    const addLike = (Like) => {
+      const url = $(".leancloud-like").length === 1 ? $(".leancloud-like").attr('id').trim() : 'https://zuo-junyuan.gitee.io';
+      var query = new Like;
+      query.save({
+        path: url,
+        nickName: 'Anonymous'
+      });
+      $(".leancloud-like").addClass('islike');
+      $(".fab-like").children(".iconfont").removeClass("iconheart").addClass("iconheart-fill").css("color", "#eb3223");
+      ZHAOO.zui.message({ text: '爱你哦~', type: 'success' });
+      setTimeout(() => showLike(Like), 1000);
+    }
+
+    const handleLikeClick = () => {
+      const isLike = $(".leancloud-like").length === 1 && $(".leancloud-like").hasClass('islike') ? true : false;
+      if (isLike) {
+        ZHAOO.zui.message({ text: '小心心不可以收回呢~', type: 'warning' });
+      } else {
+        addLike(Like);
+      }
+    }
+
+    $(function () {
+      addCount(Counter);
+      showCount(Counter);
+      showLike(Like);
+      $(".fab-like").on("click", function () {
+        handleLikeClick();
+      });
+    });
+
+  });
+</script>
+
+
+
+
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

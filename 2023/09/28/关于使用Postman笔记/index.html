@@ -1,0 +1,692 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" color-mode=light>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>关于使用Postman笔记 - 小Z😊成长录◝( •̀ ω •́ )✧</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  <meta name="keywords" content="ZcZjy,Blogs,Java,Spring,软件开发技术">
+  <meta name="description" content="
+一、关于Postman的说明1、postman界面1...">
+  <meta name="author" content="ZcZjy">
+  <link rel="icon" href="/images/icons/dog.png" type="image/png" sizes="16x16">
+  <link rel="icon" href="/images/icons/dog.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/images/icons/dog.png" sizes="180x180">
+  <meta rel="mask-icon" href="/images/icons/dog.svg" color="#333333">
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/dog.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+    
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_1445822_p6ry5n7lrr.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+    
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css" name="highlight-style" mode="light">
+
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solarized-dark.min.css" name="highlight-style" mode="dark">
+
+      
+  
+
+  <script>
+	
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      loading: {
+        gif: '/images/theme/loading.gif',
+        lottie: ''
+      },
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: {
+          gif: '/images/theme/loading.gif',
+          lottie: ''
+        }
+      },
+      donate: {
+        enable: true,
+        alipay: '/images/zjyzfb.jpg',
+        wechat: '/images/zjyzanshang.jpg'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: true,
+        always_show: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      },
+      preview: {
+        background: {
+          default: '',
+          api: ''
+        },
+        motto: {
+          default: '励志成为技术大牛的一名小白',
+          typing: true,
+          api: '',
+          data_contents: '["data","content"]'
+        },
+      },
+      qrcode: {
+        enable: false,
+        type: 'url',
+        image: 'https://pic.izhaoo.com/weapp-code.jpg',
+      },
+      toc: {
+        enable: true
+      },
+      scrollbar: {
+        type: 'default'
+      },
+      notification: {
+        enable: false,
+        delay: 4500,
+        list: '',
+        page_white_list: '',
+        page_black_list: ''
+      },
+      search: {
+        enable: true,
+        path: '/search.xml'
+      }
+    }
+	console.log(111111,CONFIG.search)
+  </script>
+
+  
+
+  
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="lock-screen">
+  <div class="loading" id="loading"></div>
+  
+    
+
+
+  <nav class="navbar">
+    <div class="left">
+      
+        <i class="iconfont iconhome j-navbar-back-home"></i>
+      
+      
+      
+        <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+      
+      
+        <i class="iconfont iconsearch j-navbar-search"></i>
+      
+	  <div class="vertical"></div>
+	  <div id="tp-weather-widget" style="margin-left: 15px;padding: 0 10px;border-radius: 20px;"></div>
+	  <div class="vertical"></div>
+	  <div class="ZcZjy" onclick="hitokoto()">ZcZjy：<span id="ZcZjytext" class="ZcZjytext">换一句！~vo(*^＠^*)o</span></div>
+	  <div id="hitokoto" class="hitokoto">
+	    <div id="hitokoto_text" class="hitokoto">今天该说什么呢和φ(*￣0￣)...</div>
+	  </div>
+	  <style>
+	  .vertical {
+		  height: 25px;
+		  border-right: 2px solid grey;
+		  margin-left: 10px;
+		  color: white;
+		  text-shadow: 1px 1px 1px grey,
+		  			  1px 1px 5px grey,
+		  			  1px 1px 10px grey;
+	  }
+	  .dsrBSL {
+		 color: white;
+		 text-shadow: 1px 1px 1px grey,
+		 			  1px 1px 5px grey,
+		 			  1px 1px 10px grey;
+		  font-size: 15px;
+	  }  
+	  .navbar .iconfont {
+		  color: #dddddd;
+		  text-shadow: 1px 1px 1px grey;
+	  }
+	  .ZcZjy {
+		 position: relative;
+		 display: inline-block;
+		 margin-left: 15px;
+		 color: white;
+		 text-shadow: 1px 1px 1px grey,
+		 			  1px 1px 5px grey,
+		 			  1px 1px 10px grey;
+	  }
+	  .ZcZjytext {
+		  font-size: 10px;
+		  width: 150px;
+	  }
+	  .ZcZjy .ZcZjytext {
+	  visibility: hidden;
+	  color: white;
+	  text-align: center;
+	  border-radius: 10px;
+	  padding: 5px;
+	  position: absolute;
+	  z-index: 1;
+	  top: 105%;
+	  left: 50%;
+	  transform: translateX(-50%);
+	  opacity: 0;
+	  transition: opacity 0.3s;
+	  }
+	  .hitokoto {
+		  font-weight: lighter;
+		  margin-left: 5px;
+		  color: white;
+		  text-shadow: 1px 1px 1px grey,
+						1px 1px 5px grey,
+						1px 1px 10px grey;
+	  }
+	  .ZcZjy:hover .ZcZjytext {
+	  visibility: visible;
+	  opacity: 1;
+	  }
+	  .ZcZjy:hover, .hitokoto:hover {
+		  
+		  cursor: pointer;
+		  font-size: 18px;
+		  text-shadow: 0 0 0 10px #dddddd,
+					   0 0 0 20px #dddddd,
+					   0 0 0 40px #dddddd,
+					   0 0 0 80px #dddddd,
+					   0 0 0 120px #dddddd,
+					   0 0 0 160px #dddddd;
+	  }
+	  .hitokoto {
+		position: relative;
+		overflow: hidden;
+		border-bottom: 1px solid white;
+	  }
+	  .hitokoto::after {
+		content: "";
+		position: absolute;
+		right: 0px;
+		height: 32px;
+		border-right: 2px solid #dddddd;
+		animation: showInfinite 0.5s infinite both;
+	  }
+	  @keyframes showInfinite {
+	    0% {
+	      opacity: 1;
+	    }
+	    100% {
+	      opacity: 0;
+	    }
+	  }
+	  </style>
+	  <script>
+
+	  
+	  function hitokoto () {
+			$.ajax({
+				url: "https://v1.hitokoto.cn/",
+				type: 'GET',
+				dataType: 'json',
+				success: function(res) {
+					printHitokoto(res.hitokoto);
+				}
+			})
+		}
+		
+		function printHitokoto (text) {
+			var i = 0;
+			var timer = setInterval(function() {
+				if (i >= text.length) {
+					clearInterval(timer);
+				}
+				$("#hitokoto").text(text.slice(0, i++));
+			}, 100);
+		}
+		
+		function ZcZjytext() {
+		  //停止执行间隔函数
+		  if (setIntervalFun != null) {
+		   	clearInterval(setIntervalFun);
+			setIntervalFun = null;
+			$("#ZcZjytext").text("说话！~vo(*^＠^*)o");
+		  }else {
+			  setIntervalFun = setInterval("hitokoto()", 7000);
+			  $("#ZcZjytext").text("住嘴！~v`(*>﹏<*)′");
+		  }
+		}
+		(function(a,h,g,f,e,d,c,b){b=function(){d=h.createElement(g);c=h.getElementsByTagName(g)[0];d.src=e;d.charset="utf-8";d.async=1;c.parentNode.insertBefore(d,c)};a["SeniverseWeatherWidgetObject"]=f;a[f]||(a[f]=function(){(a[f].q=a[f].q||[]).push(arguments)});a[f].l=+new Date();if(a.attachEvent){a.attachEvent("onload",b)}else{a.addEventListener("load",b,false)}}(window,document,"script","SeniverseWeatherWidget","//cdn.sencdn.com/widget2/static/js/bundle.js?t="+parseInt((new Date().getTime() / 100000000).toString(),10)));
+		window.SeniverseWeatherWidget('show', {
+		  flavor: "slim",
+		  location: "WX4FBXXFKE4F",
+		  geolocation: true,
+		  language: "zh-Hans",
+		  unit: "c",
+		  theme: "auto",
+		  token: "12b1be52-c77a-49de-99f9-dcb0fd324d19",
+		  hover: "enabled",
+		  container: "tp-weather-widget"
+		});
+	  </script>
+    </div>
+    <div class="center">
+		关于使用Postman笔记
+	</div>
+    <div class="right">
+      <i class="iconfont iconmenu j-navbar-menu"></i>
+    </div>
+    
+  </nav>
+
+  
+  
+
+<nav class="menu">
+  <div class="menu-container">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content"><li class="menu-item">		
+        <a href="/ " class="underline "> 首页</a>
+      </li><li class="menu-item">		
+        <a href="/tags/ " class="underline "> 标签</a>
+      </li><li class="menu-item">		
+        <a href="/categories/ " class="underline "> 分类</a>
+      </li></ul>
+    
+      <div class="menu-copyright"><p>Copyright© 2023 建站  |  ZcZjy ( 还没备案喔~！！！ )</p><p>联系我：540507521@qq.com</p><p>关于我：我是ZcZjy</p><p>积少成多，只要学不死就往死里学👀</p><p>喜欢分享，也喜欢交朋友，正在努力钻研java、spring全家桶、前端vue等等技术，梦想成为一名技术大牛</p></div>
+    
+  </div>
+</nav>
+  <main id="main">
+  <div class="article-wrap">
+    <div class="row container">
+      <div class="col-xl-3"></div>
+      <div class="col-xl-6"><article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="/images/text_cover_background/cover_background.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">关于使用Postman笔记</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>九月 28, 2023</span>
+      
+        <span class="post-info-item">
+          <i class="iconfont iconeye"></i><span id="/2023/09/28/%E5%85%B3%E4%BA%8E%E4%BD%BF%E7%94%A8Postman%E7%AC%94%E8%AE%B0/" class="leancloud-counter" data-flag-title="关于使用Postman笔记"></span>
+        </span>
+        <span class="post-info-item">
+          <i class="iconfont iconheart"></i><span id="/2023/09/28/%E5%85%B3%E4%BA%8E%E4%BD%BF%E7%94%A8Postman%E7%AC%94%E8%AE%B0/" class="leancloud-like" data-flag-title="关于使用Postman笔记"></span>
+        </span>
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>3693</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        
+        <hr>
+<h1 id="一、关于Postman的说明"><a href="#一、关于Postman的说明" class="headerlink" title="一、关于Postman的说明"></a>一、关于Postman的说明</h1><h3 id="1、postman界面"><a href="#1、postman界面" class="headerlink" title="1、postman界面"></a>1、postman界面</h3><p>1、Collections：集合，项目集合<br>2、Apis：api文档<br>3、EnViromments：环境变量，全局变量<br>4、Mock Server：虚拟服务器<br>5、Monitors：监听器<br>6、History：历史记录  </p>
+<h3 id="2、请求页面说明"><a href="#2、请求页面说明" class="headerlink" title="2、请求页面说明"></a>2、请求页面说明</h3><p>1、Params（get请求传参 ）<br>（1）@PathVariable 这种方式传参，直接在请求路径后面加参数值<br><strong>后端controller的请求为：</strong> </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(value = &quot;list/&#123;category&#125;&quot;, method = RequestMethod.GET)</span></span><br><span class="line"><span class="keyword">public</span> <span class="title function_">voidlist</span><span class="params">(<span class="meta">@PathVariable(&quot;category&quot;)</span> String category)</span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>postman发送请求为：</strong></p>
+<img src="/2023/09/28/%E5%85%B3%E4%BA%8E%E4%BD%BF%E7%94%A8Postman%E7%AC%94%E8%AE%B0/1.jpg" class="">
+<p>（2）@RequestParam 这种方式传参，就在Query Params列表下输入参数<br><strong>说明：</strong> 要是参数比较多，不能一个一个输入，可以点击 Bulk Edit，批量输入。<br> <strong>后端controller的请求为：</strong> </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GetMapping(&quot;/doneList&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">doneList</span><span class="params">(<span class="meta">@RequestParam(defaultValue = &quot;&quot;)</span> String category,</span></span><br><span class="line"><span class="params">                     <span class="meta">@RequestParam(value = &quot;keywords&quot;,defaultValue = &quot;&quot;)</span>String keywords)</span> &#123;&#125;       </span><br></pre></td></tr></table></figure>
+<p><strong>postman发送请求为：</strong></p>
+<img src="/2023/09/28/%E5%85%B3%E4%BA%8E%E4%BD%BF%E7%94%A8Postman%E7%AC%94%E8%AE%B0/2.jpg" class="">
+<p>2、Authorization（鉴权）<br>3、Headers（请求头）<br>4、Body（post请求参数）<br>（1）none：没有参数<br>（2）form-data：既可以传键值对参数，也可以传文件<br>（3）x-www-from-urlencoded：只能够传键值对参数<br>（4）raw：可以传json、text、xml、html、javascript<br>（5）binary：把文件以二进制的方式传参<br>5、Pre-request Script（请求前的前置脚本）<br>6、Tests（请求之后的断言，用来查看请求之后的结果）<br>7、Cookies（蓝色的字体，用来管理cookie信息）  </p>
+<h3 id="3、响应页面说明"><a href="#3、响应页面说明" class="headerlink" title="3、响应页面说明"></a>3、响应页面说明</h3><p>（1）Body：接口返回的数据<br>（2）Cookies：响应的Cookie信息<br>（3）Headers：响应头<br>（4）Test Results：断言的结果</p>
+<h3 id="4、Postman的内置参数"><a href="#4、Postman的内置参数" class="headerlink" title="4、Postman的内置参数"></a>4、Postman的内置参数</h3><p><strong>说明：</strong>“{ {}}” 中加上“$”就是内置的参数。<br>（1）{ { $timestamp }}：生成当前时间的时间戳。<br>（2）{ { $randomInt }}：生成 0-1000 之间的随机数。<br>（3）{ { $guid }}：生成速记 GUID 字符串。</p>
+<h3 id="5、请求头各参数说明"><a href="#5、请求头各参数说明" class="headerlink" title="5、请求头各参数说明"></a>5、请求头各参数说明</h3><p>（1）Host：请求的主机地址。<br>（2）Connection：连接方式。<br>（3）Accept：客户端接收到的数据格式。<br>（4）X-Requested-With：异步请求。<br>（5）User-Agent：客户端的用户类型。（向服务器描述浏览器的类型）<br>（6）Referer：来源。<br>（7）Cookie：Cookie信息。<br>（8）Content-Type：请求内容的格式。</p>
+<br/>
+
+<hr>
+<br/>
+
+<h1 id="二、Postman的一些用法"><a href="#二、Postman的一些用法" class="headerlink" title="二、Postman的一些用法"></a>二、Postman的一些用法</h1><h3 id="1、Postman全局设置token"><a href="#1、Postman全局设置token" class="headerlink" title="1、Postman全局设置token"></a>1、Postman全局设置token</h3><p><strong>说明：</strong>当我们使用Postman来测试接口时，发送每个请求都需要手动加上token，这样的操作太繁琐了，所以我们可以设置全局token，在每次发送请求的时候自动给我们加上token。<br>（1）在Collections中，点击Pre-request Script选项。<br>（2）输入下面代码脚本，根据实际情况更改。  </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">pm.<span class="title function_">sendRequest</span>(&#123;</span><br><span class="line">    <span class="attr">url</span>: <span class="string">&#x27;http://localhost:8080/api/v1/account/login&#x27;</span>, <span class="comment">// 登录的接口地址</span></span><br><span class="line">    <span class="attr">method</span>: <span class="string">&#x27;POST&#x27;</span>,</span><br><span class="line">    <span class="attr">header</span>: &#123;</span><br><span class="line">        <span class="string">&quot;Accept&quot;</span>: <span class="string">&#x27;application/json&#x27;</span>,</span><br><span class="line">        <span class="string">&quot;Content-Type&quot;</span>: <span class="string">&quot;application/json&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">body</span>: &#123;</span><br><span class="line">        <span class="attr">mode</span>: <span class="string">&#x27;raw&#x27;</span>,</span><br><span class="line">        <span class="attr">raw</span>: <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(&#123;</span><br><span class="line">            <span class="attr">username</span>: <span class="string">&quot;admin&quot;</span>, <span class="comment">// 登录账号</span></span><br><span class="line">            <span class="attr">password</span>: <span class="string">&quot;admin&quot;</span> <span class="comment">// 登录密码</span></span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;, <span class="keyword">function</span>(<span class="params">err, res</span>) &#123;</span><br><span class="line">    pm.<span class="property">request</span>.<span class="property">headers</span>.<span class="title function_">add</span>(&#123;</span><br><span class="line">        <span class="attr">key</span>: <span class="string">&#x27;token&#x27;</span>, <span class="attr">value</span>: res.<span class="title function_">json</span>().<span class="property">data</span> <span class="comment">// 登录请求返回的token数据，如果是data里面的token，就是data.token；key后面的&#x27;token&#x27;表示token的名字。</span></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="2、Postman全局变量使用方法"><a href="#2、Postman全局变量使用方法" class="headerlink" title="2、Postman全局变量使用方法"></a>2、Postman全局变量使用方法</h3><p>（1）在登录的接口那，点击 Tests 选项。<br>（2）在这里使用 js 代码提取 responseBody 返回的数据，比如 token。  </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(responseBody); <span class="comment">// 查看 responseBody 数据</span></span><br><span class="line"><span class="keyword">var</span> result = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(responseBody); <span class="comment">// 将 responseBody（返回的是 JSON 字符串） 转换为 JSON 数据</span></span><br><span class="line">pm.<span class="property">globals</span>.<span class="title function_">set</span>(<span class="string">&quot;token&quot;</span>,result.<span class="property">data</span>.<span class="property">token</span>); <span class="comment">// 左边方框里面 Snippets 下面选择 Set a global variable 这个选项，然后自动生成的</span></span><br></pre></td></tr></table></figure>
+<p>（3）然后可以点击右上角 No Environment 旁边的小眼睛图标查看是否提取设置成功。<br><strong>注意：</strong>如果出现 token 无效等关于 token 的异常错误，就需要在每个请求接口的 Headers 头部中加入  这个。 </p>
+<h3 id="3、Postman环境变量使用方法"><a href="#3、Postman环境变量使用方法" class="headerlink" title="3、Postman环境变量使用方法"></a>3、Postman环境变量使用方法</h3><p><strong>说明：</strong>有多种环境（开发环境、生产环境、测试环境）的情况下使用 EnViromments  环境变量。<br>（1）点击 EnViromments 选项，新增三个环境，分别为 开发环境、生产环境、测试环境；<br>（2）三个环境的 Variable 下的值要一样，比如都是 url ，Initial value下的值为服务器地址，比如 localhost:8080；<br>（3）在请求接口的时候就不用这样写了：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="regexp">//</span>localhost:<span class="number">8080</span><span class="regexp">/api/</span>v1<span class="regexp">/account/</span>login</span><br></pre></td></tr></table></figure>
+<p>改成：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="regexp">//</span>&#123;&#123;url&#125;&#125;:<span class="number">8080</span><span class="regexp">/api/</span>v1<span class="regexp">/account/</span>login</span><br></pre></td></tr></table></figure>
+<p>（4）使用：在右上角有一个 No EnViromment，点击选择需要在哪个环境下发送请求就可以了。</p>
+<h3 id="4、Postman请求测试同时上传文件和json对象的接口"><a href="#4、Postman请求测试同时上传文件和json对象的接口" class="headerlink" title="4、Postman请求测试同时上传文件和json对象的接口"></a>4、Postman请求测试同时上传文件和json对象的接口</h3><p><strong>controller的代码：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 后端需要两个参数，一个参数用来接收上传文件，另一个参数用来接收json数据。</span></span><br><span class="line"><span class="comment">// 后端接收文件可以采用MultipartFile来接收，json数据可以创建对象进行接收， </span></span><br><span class="line"><span class="comment">// 采用@RequestPart注解进行数据绑定</span></span><br><span class="line"><span class="meta">@PostMapping(&quot;/upload&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">upload</span><span class="params">(<span class="meta">@RequestPart(&quot;file&quot;)</span> MultipartFile uploadFile,<span class="meta">@RequestPart(&quot;req&quot;)</span> <span class="meta">@Valid</span> Query req)</span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="comment">//TODO 业务代码</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>使用postman进行请求：</strong><br>（1）使用 form-data 来进行传参，将文件和json数据隔开。<br>（2）根据后端别名来取名，文件为：file；json为：req（根据上面controller参数得来。<br>（3）在req json数据后面 Content type列加上 application&#x2F;json就可以了  </p>
+<img src="/2023/09/28/%E5%85%B3%E4%BA%8E%E4%BD%BF%E7%94%A8Postman%E7%AC%94%E8%AE%B0/3.jpg" class="">
+      </section>
+      <section class="extra">
+        
+          <ul class="copyright">
+  
+    <li><strong>本文作者：</strong>ZcZjy</li>
+    <li><strong>本文链接：</strong><a href="https://zuo-junyuan.gitee.io/2023/09/28/%E5%85%B3%E4%BA%8E%E4%BD%BF%E7%94%A8Postman%E7%AC%94%E8%AE%B0/index.html" title="https:&#x2F;&#x2F;zuo-junyuan.gitee.io&#x2F;2023&#x2F;09&#x2F;28&#x2F;%E5%85%B3%E4%BA%8E%E4%BD%BF%E7%94%A8Postman%E7%AC%94%E8%AE%B0&#x2F;index.html">https:&#x2F;&#x2F;zuo-junyuan.gitee.io&#x2F;2023&#x2F;09&#x2F;28&#x2F;%E5%85%B3%E4%BA%8E%E4%BD%BF%E7%94%A8Postman%E7%AC%94%E8%AE%B0&#x2F;index.html</a></li>
+    <li><strong>版权声明：</strong>本博客所有文章均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" title="BY-NC-SA" target="_blank" rel="noopener">BY-NC-SA</a> 许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+          <section class="donate">
+  <div id="qrcode-donate">
+    <img   class="lazyload" data-original="/images/zjyzfb.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+        
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Postman/" rel="tag">Postman</a></li></ul> 
+
+        
+  <nav class="nav">
+    <a href="/2023/10/04/%E5%85%B3%E4%BA%8ESpring%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="iconfont iconleft"></i>关于Spring学习笔记</a>
+    <a href="/2023/09/28/%E5%85%B3%E4%BA%8Enpm%E3%80%81nrm%E3%80%81nvm%E3%80%81yarn%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">关于npm、nrm、nvm、yarn学习记录<i class="iconfont iconright"></i></a>
+  </nav>
+
+      </section>
+      
+        <section class="comments">
+  
+    <div class="btn" id="comments-btn">查看评论</div>
+  
+  
+<div id="valine"></div>
+<script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  window.onload = function () {
+    var loadValine = function () {
+      new Valine({
+        el: '#valine',
+        app_id: "YBz2laX5qgCJLxNTpC7akJuU-gzGzoHsz",
+        app_key: "lHPh4E9b3LU0DWfqppMWL7Tt",
+        placeholder: "O(∩_∩)O~欢迎留言~v😍！",
+        avatar: "wavatar",
+        pageSize: "10",
+        lang: "zh-CN",
+      });
+    }
+    if ( true ) {
+      $("#comments-btn").on("click", function () {
+        $(this).hide();
+        loadValine();
+      });
+    } else {
+      loadValine();
+    }
+  };
+</script>
+
+</section>
+      
+    </section>
+  </div>
+</article>
+
+</div>
+      <div class="col-xl-3">
+        
+          
+  <aside class="toc-wrap">
+    <h3 class="toc-title">文章目录：</h3>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%85%B3%E4%BA%8EPostman%E7%9A%84%E8%AF%B4%E6%98%8E"><span class="toc-text">一、关于Postman的说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81postman%E7%95%8C%E9%9D%A2"><span class="toc-text">1、postman界面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E8%AF%B7%E6%B1%82%E9%A1%B5%E9%9D%A2%E8%AF%B4%E6%98%8E"><span class="toc-text">2、请求页面说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E5%93%8D%E5%BA%94%E9%A1%B5%E9%9D%A2%E8%AF%B4%E6%98%8E"><span class="toc-text">3、响应页面说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81Postman%E7%9A%84%E5%86%85%E7%BD%AE%E5%8F%82%E6%95%B0"><span class="toc-text">4、Postman的内置参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E3%80%81%E8%AF%B7%E6%B1%82%E5%A4%B4%E5%90%84%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E"><span class="toc-text">5、请求头各参数说明</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81Postman%E7%9A%84%E4%B8%80%E4%BA%9B%E7%94%A8%E6%B3%95"><span class="toc-text">二、Postman的一些用法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81Postman%E5%85%A8%E5%B1%80%E8%AE%BE%E7%BD%AEtoken"><span class="toc-text">1、Postman全局设置token</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81Postman%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-text">2、Postman全局变量使用方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81Postman%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-text">3、Postman环境变量使用方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81Postman%E8%AF%B7%E6%B1%82%E6%B5%8B%E8%AF%95%E5%90%8C%E6%97%B6%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E5%92%8Cjson%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%8E%A5%E5%8F%A3"><span class="toc-text">4、Postman请求测试同时上传文件和json对象的接口</span></a></li></ol></li></ol></li></ol>
+  </aside>
+
+        
+      </div>
+    </div>
+  </div>
+</main>
+  
+
+<footer class="footer">
+  <div class="footer-social"><a 
+        href="tencent://message/?Menu=yes&uin=894519210 "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#12B7F5'" 
+        onMouseOut="this.style.color='#88ada6'">
+          <i class="iconfont  iconQQ "></i>
+      </a><a 
+        href="javascript:; "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#09BB07'" 
+        onMouseOut="this.style.color='#88ada6'">
+          <i class="iconfont  iconwechat-fill "></i>
+      </a><a 
+        href="https://www.instagram.com/izhaoo/ "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#DA2E76'" 
+        onMouseOut="this.style.color='#88ada6'">
+          <i class="iconfont  iconinstagram "></i>
+      </a><a 
+        href="https://github.com/zhaoo "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#9f7be1'" 
+        onMouseOut="this.style.color='#88ada6'">
+          <i class="iconfont  icongithub-fill "></i>
+      </a><a 
+        href="mailto:izhaoo@163.com "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color=#FF3B00" 
+        onMouseOut="this.style.color='#88ada6'">
+          <i class="iconfont  iconmail"></i>
+      </a></div>
+  
+    <div class="footer-copyright"><p>Copyright© 2023 建站  |  ZcZjy ( 还没备案喔~！！！ )</p><p>联系我：540507521@qq.com</p><p>关于我：我是ZcZjy</p><p>积少成多，只要学不死就往死里学👀</p><p>喜欢分享，也喜欢交朋友，正在努力钻研java、spring全家桶、前端vue等等技术，梦想成为一名技术大牛</p></div>
+  
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+    <div class="fab fab-like">
+      <i class="iconfont iconheart"></i>
+    </div>
+  
+  
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+  
+    <div class="search">
+  <div class="search-container">
+    <div class="search-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <div class="search-input-wrapper">
+      <i class="search-input-icon iconfont iconsearch"></i>
+      <input class="search-input" type="search" id="search-input" placeholder="Search..." autofocus autocomplete="off"
+        autocorrect="off" autocapitalize="off">
+    </div>
+    <div class="search-output" id="search-output"></div>
+  </div>
+</div>
+  
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+  <script>
+  $.getScript("//cdn.jsdelivr.net/npm/leancloud-storage@4.1.0/dist/av-min.js", () => {
+
+    AV.init({
+      appId: 'YBz2laX5qgCJLxNTpC7akJuU-gzGzoHsz',
+      appKey: 'lHPh4E9b3LU0DWfqppMWL7Tt',
+      serverURLs: 'https://leancloud.cn/',
+    });
+
+    const Counter = AV.Object.extend("Counter");
+    const Like = AV.Object.extend("Like");
+
+    const showCount = (Counter) => {
+      const asyncLimit = new AsyncLimit(2);
+      $(".leancloud-counter").each(async (e) => {
+        const url = $(".leancloud-counter").eq(e).attr('id').trim();
+        const query = new AV.Query("Counter");
+        query.equalTo("words", url);
+        let count = await asyncLimit.run(() => query.count());
+        $(".leancloud-counter").eq(e).text(count ? count : 0);
+      });
+    }
+
+    const addCount = (Counter) => {
+      const url = $(".leancloud-counter").length === 1 ? $(".leancloud-counter").attr('id').trim() : 'https://zuo-junyuan.gitee.io';
+      var query = new Counter;
+      query.save({
+        words: url
+      });
+    }
+
+    const showLike = (Like) => {
+      const asyncLimit = new AsyncLimit(2);
+      $(".leancloud-like").each(async (e) => {
+        const url = $(".leancloud-like").eq(e).attr('id').trim();
+        const query = new AV.Query("Like");
+        query.equalTo("path", url);
+        let count = await asyncLimit.run(() => query.count());
+        $(".leancloud-like").eq(e).text(count ? count : 0);
+      });
+    }
+
+    const addLike = (Like) => {
+      const url = $(".leancloud-like").length === 1 ? $(".leancloud-like").attr('id').trim() : 'https://zuo-junyuan.gitee.io';
+      var query = new Like;
+      query.save({
+        path: url,
+        nickName: 'Anonymous'
+      });
+      $(".leancloud-like").addClass('islike');
+      $(".fab-like").children(".iconfont").removeClass("iconheart").addClass("iconheart-fill").css("color", "#eb3223");
+      ZHAOO.zui.message({ text: '爱你哦~', type: 'success' });
+      setTimeout(() => showLike(Like), 1000);
+    }
+
+    const handleLikeClick = () => {
+      const isLike = $(".leancloud-like").length === 1 && $(".leancloud-like").hasClass('islike') ? true : false;
+      if (isLike) {
+        ZHAOO.zui.message({ text: '小心心不可以收回呢~', type: 'warning' });
+      } else {
+        addLike(Like);
+      }
+    }
+
+    $(function () {
+      addCount(Counter);
+      showCount(Counter);
+      showLike(Like);
+      $(".fab-like").on("click", function () {
+        handleLikeClick();
+      });
+    });
+
+  });
+</script>
+
+
+
+
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

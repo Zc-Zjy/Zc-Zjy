@@ -1,0 +1,751 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" color-mode=light>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mysql数据库学习笔记 - 小Z😊成长录◝( •̀ ω •́ )✧</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  <meta name="keywords" content="ZcZjy,Blogs,Java,Spring,软件开发技术">
+  <meta name="description" content="
+一、Mysql操作命令1、连接mysql在Dos（c...">
+  <meta name="author" content="ZcZjy">
+  <link rel="icon" href="/images/icons/dog.png" type="image/png" sizes="16x16">
+  <link rel="icon" href="/images/icons/dog.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/images/icons/dog.png" sizes="180x180">
+  <meta rel="mask-icon" href="/images/icons/dog.svg" color="#333333">
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/dog.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+    
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_1445822_p6ry5n7lrr.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+    
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css" name="highlight-style" mode="light">
+
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solarized-dark.min.css" name="highlight-style" mode="dark">
+
+      
+  
+
+  <script>
+	
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      loading: {
+        gif: '/images/theme/loading.gif',
+        lottie: ''
+      },
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: {
+          gif: '/images/theme/loading.gif',
+          lottie: ''
+        }
+      },
+      donate: {
+        enable: true,
+        alipay: '/images/zjyzfb.jpg',
+        wechat: '/images/zjyzanshang.jpg'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: true,
+        always_show: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      },
+      preview: {
+        background: {
+          default: '',
+          api: ''
+        },
+        motto: {
+          default: '励志成为技术大牛的一名小白',
+          typing: true,
+          api: '',
+          data_contents: '["data","content"]'
+        },
+      },
+      qrcode: {
+        enable: false,
+        type: 'url',
+        image: 'https://pic.izhaoo.com/weapp-code.jpg',
+      },
+      toc: {
+        enable: true
+      },
+      scrollbar: {
+        type: 'default'
+      },
+      notification: {
+        enable: false,
+        delay: 4500,
+        list: '',
+        page_white_list: '',
+        page_black_list: ''
+      },
+      search: {
+        enable: true,
+        path: '/search.xml'
+      }
+    }
+	console.log(111111,CONFIG.search)
+  </script>
+
+  
+
+  
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="lock-screen">
+  <div class="loading" id="loading"></div>
+  
+    
+
+
+  <nav class="navbar">
+    <div class="left">
+      
+        <i class="iconfont iconhome j-navbar-back-home"></i>
+      
+      
+      
+        <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+      
+      
+        <i class="iconfont iconsearch j-navbar-search"></i>
+      
+	  <div class="vertical"></div>
+	  <div id="tp-weather-widget" style="margin-left: 15px;padding: 0 10px;border-radius: 20px;"></div>
+	  <div class="vertical"></div>
+	  <div class="ZcZjy" onclick="hitokoto()">ZcZjy：<span id="ZcZjytext" class="ZcZjytext">换一句！~vo(*^＠^*)o</span></div>
+	  <div id="hitokoto" class="hitokoto">
+	    <div id="hitokoto_text" class="hitokoto">今天该说什么呢和φ(*￣0￣)...</div>
+	  </div>
+	  <style>
+	  .vertical {
+		  height: 25px;
+		  border-right: 2px solid grey;
+		  margin-left: 10px;
+		  color: white;
+		  text-shadow: 1px 1px 1px grey,
+		  			  1px 1px 5px grey,
+		  			  1px 1px 10px grey;
+	  }
+	  .dsrBSL {
+		 color: white;
+		 text-shadow: 1px 1px 1px grey,
+		 			  1px 1px 5px grey,
+		 			  1px 1px 10px grey;
+		  font-size: 15px;
+	  }  
+	  .navbar .iconfont {
+		  color: #dddddd;
+		  text-shadow: 1px 1px 1px grey;
+	  }
+	  .ZcZjy {
+		 position: relative;
+		 display: inline-block;
+		 margin-left: 15px;
+		 color: white;
+		 text-shadow: 1px 1px 1px grey,
+		 			  1px 1px 5px grey,
+		 			  1px 1px 10px grey;
+	  }
+	  .ZcZjytext {
+		  font-size: 10px;
+		  width: 150px;
+	  }
+	  .ZcZjy .ZcZjytext {
+	  visibility: hidden;
+	  color: white;
+	  text-align: center;
+	  border-radius: 10px;
+	  padding: 5px;
+	  position: absolute;
+	  z-index: 1;
+	  top: 105%;
+	  left: 50%;
+	  transform: translateX(-50%);
+	  opacity: 0;
+	  transition: opacity 0.3s;
+	  }
+	  .hitokoto {
+		  font-weight: lighter;
+		  margin-left: 5px;
+		  color: white;
+		  text-shadow: 1px 1px 1px grey,
+						1px 1px 5px grey,
+						1px 1px 10px grey;
+	  }
+	  .ZcZjy:hover .ZcZjytext {
+	  visibility: visible;
+	  opacity: 1;
+	  }
+	  .ZcZjy:hover, .hitokoto:hover {
+		  
+		  cursor: pointer;
+		  font-size: 18px;
+		  text-shadow: 0 0 0 10px #dddddd,
+					   0 0 0 20px #dddddd,
+					   0 0 0 40px #dddddd,
+					   0 0 0 80px #dddddd,
+					   0 0 0 120px #dddddd,
+					   0 0 0 160px #dddddd;
+	  }
+	  .hitokoto {
+		position: relative;
+		overflow: hidden;
+		border-bottom: 1px solid white;
+	  }
+	  .hitokoto::after {
+		content: "";
+		position: absolute;
+		right: 0px;
+		height: 32px;
+		border-right: 2px solid #dddddd;
+		animation: showInfinite 0.5s infinite both;
+	  }
+	  @keyframes showInfinite {
+	    0% {
+	      opacity: 1;
+	    }
+	    100% {
+	      opacity: 0;
+	    }
+	  }
+	  </style>
+	  <script>
+
+	  
+	  function hitokoto () {
+			$.ajax({
+				url: "https://v1.hitokoto.cn/",
+				type: 'GET',
+				dataType: 'json',
+				success: function(res) {
+					printHitokoto(res.hitokoto);
+				}
+			})
+		}
+		
+		function printHitokoto (text) {
+			var i = 0;
+			var timer = setInterval(function() {
+				if (i >= text.length) {
+					clearInterval(timer);
+				}
+				$("#hitokoto").text(text.slice(0, i++));
+			}, 100);
+		}
+		
+		function ZcZjytext() {
+		  //停止执行间隔函数
+		  if (setIntervalFun != null) {
+		   	clearInterval(setIntervalFun);
+			setIntervalFun = null;
+			$("#ZcZjytext").text("说话！~vo(*^＠^*)o");
+		  }else {
+			  setIntervalFun = setInterval("hitokoto()", 7000);
+			  $("#ZcZjytext").text("住嘴！~v`(*>﹏<*)′");
+		  }
+		}
+		(function(a,h,g,f,e,d,c,b){b=function(){d=h.createElement(g);c=h.getElementsByTagName(g)[0];d.src=e;d.charset="utf-8";d.async=1;c.parentNode.insertBefore(d,c)};a["SeniverseWeatherWidgetObject"]=f;a[f]||(a[f]=function(){(a[f].q=a[f].q||[]).push(arguments)});a[f].l=+new Date();if(a.attachEvent){a.attachEvent("onload",b)}else{a.addEventListener("load",b,false)}}(window,document,"script","SeniverseWeatherWidget","//cdn.sencdn.com/widget2/static/js/bundle.js?t="+parseInt((new Date().getTime() / 100000000).toString(),10)));
+		window.SeniverseWeatherWidget('show', {
+		  flavor: "slim",
+		  location: "WX4FBXXFKE4F",
+		  geolocation: true,
+		  language: "zh-Hans",
+		  unit: "c",
+		  theme: "auto",
+		  token: "12b1be52-c77a-49de-99f9-dcb0fd324d19",
+		  hover: "enabled",
+		  container: "tp-weather-widget"
+		});
+	  </script>
+    </div>
+    <div class="center">
+		Mysql数据库学习笔记
+	</div>
+    <div class="right">
+      <i class="iconfont iconmenu j-navbar-menu"></i>
+    </div>
+    
+  </nav>
+
+  
+  
+
+<nav class="menu">
+  <div class="menu-container">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content"><li class="menu-item">		
+        <a href="/ " class="underline "> 首页</a>
+      </li><li class="menu-item">		
+        <a href="/tags/ " class="underline "> 标签</a>
+      </li><li class="menu-item">		
+        <a href="/categories/ " class="underline "> 分类</a>
+      </li></ul>
+    
+      <div class="menu-copyright"><p>Copyright© 2023 建站  |  ZcZjy ( 还没备案喔~！！！ )</p><p>联系我：540507521@qq.com</p><p>关于我：我是ZcZjy</p><p>积少成多，只要学不死就往死里学👀</p><p>喜欢分享，也喜欢交朋友，正在努力钻研java、spring全家桶、前端vue等等技术，梦想成为一名技术大牛</p></div>
+    
+  </div>
+</nav>
+  <main id="main">
+  <div class="article-wrap">
+    <div class="row container">
+      <div class="col-xl-3"></div>
+      <div class="col-xl-6"><article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="/images/text_cover_background/cover_background.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">Mysql数据库学习笔记</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>十月 12, 2023</span>
+      
+        <span class="post-info-item">
+          <i class="iconfont iconeye"></i><span id="/2023/10/12/Mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="leancloud-counter" data-flag-title="Mysql数据库学习笔记"></span>
+        </span>
+        <span class="post-info-item">
+          <i class="iconfont iconheart"></i><span id="/2023/10/12/Mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="leancloud-like" data-flag-title="Mysql数据库学习笔记"></span>
+        </span>
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>12915</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        
+        <hr>
+<h1 id="一、Mysql操作命令"><a href="#一、Mysql操作命令" class="headerlink" title="一、Mysql操作命令"></a>一、Mysql操作命令</h1><h6 id="1、连接mysql"><a href="#1、连接mysql" class="headerlink" title="1、连接mysql"></a>1、连接mysql</h6><p>在Dos（cmd）命令中执行：<code>mysql -u 【mysql用户名】 -p</code>，然后输入密码，比如：<code>mysql -u root -p root</code>。</p>
+<h6 id="2、查看数据库"><a href="#2、查看数据库" class="headerlink" title="2、查看数据库"></a>2、查看数据库</h6><p>连接mysql之后，执行命令：<code>show databases;</code>（别忘记分号），查看数据库有几个。</p>
+<h6 id="3、选择要使用哪个数据库"><a href="#3、选择要使用哪个数据库" class="headerlink" title="3、选择要使用哪个数据库"></a>3、选择要使用哪个数据库</h6><p><code>use test;</code>：选择使用test数据库。</p>
+<h6 id="4、查看数据库里有几个表"><a href="#4、查看数据库里有几个表" class="headerlink" title="4、查看数据库里有几个表"></a>4、查看数据库里有几个表</h6><p><code>show tables;</code>：查看tables数据库有几个表。</p>
+<h6 id="5、创建表"><a href="#5、创建表" class="headerlink" title="5、创建表"></a>5、创建表</h6><p>在mysql命令行输入：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> if <span class="keyword">not</span> <span class="keyword">exists</span> student(</span><br><span class="line"><span class="operator">-</span><span class="operator">&gt;</span>id <span class="type">int</span> <span class="keyword">primary</span> key auto_increment comment <span class="string">&#x27;注释&#x27;</span>,</span><br><span class="line"><span class="operator">-</span><span class="operator">&gt;</span>name <span class="type">varchar</span>(<span class="number">50</span>),</span><br><span class="line"><span class="operator">-</span><span class="operator">&gt;</span>sex <span class="type">char</span>(<span class="number">1</span>));</span><br></pre></td></tr></table></figure>
+
+<h6 id="6、查看表结构"><a href="#6、查看表结构" class="headerlink" title="6、查看表结构"></a>6、查看表结构</h6><p><code>desc student;</code>：查看student表结构。</p>
+<h6 id="7、设置中文乱码问题"><a href="#7、设置中文乱码问题" class="headerlink" title="7、设置中文乱码问题"></a>7、设置中文乱码问题</h6><p>1、查看编码<br><code>show variables like &#39;char%&#39;;</code><br>2、更改编码</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> character_set_results<span class="operator">=</span>gbk; #结果显示乱码问题</span><br><span class="line"><span class="keyword">set</span> character_set_client<span class="operator">=</span>gbk; #数据写入报错</span><br></pre></td></tr></table></figure>
+
+<h6 id="8、插入多个数据"><a href="#8、插入多个数据" class="headerlink" title="8、插入多个数据"></a>8、插入多个数据</h6><p><code>insert into student(name,sex) values (&#39;张三&#39;,&#39;男&#39;),(&#39;李四&#39;,&#39;女&#39;);</code></p>
+<h6 id="9、删除数据"><a href="#9、删除数据" class="headerlink" title="9、删除数据"></a>9、删除数据</h6><p><code>delete from student where name = &#39;张三&#39;;</code></p>
+<h6 id="10、更改数据"><a href="#10、更改数据" class="headerlink" title="10、更改数据"></a>10、更改数据</h6><p><code>update student set name=&#39;张三&#39; where name=&#39;李四&#39;;</code>：把李四改成张三。</p>
+<h6 id="11、删除表"><a href="#11、删除表" class="headerlink" title="11、删除表"></a>11、删除表</h6><p><code>drop table student;</code></p>
+<h6 id="12、表中新增一列属性"><a href="#12、表中新增一列属性" class="headerlink" title="12、表中新增一列属性"></a>12、表中新增一列属性</h6><p>语法：<code>alter table 【表名】 add 【列名】 【列类型】;</code><br>例子：<code>alter table table_name add col_name char(5);</code>（向table_name表新增一列col_name属性，类型为char）<br>如果我们希望添加在指定的一列，可以用：<br><code>alter table table_name add column_name varchar(255) not null after name;</code><br>注意，上面这个命令的意思是说添加新列到某一列后面。如果想添加到第一列的话，可以用：<br><code>alter table table_name add column column_name varchar(255) not null first;</code></p>
+<h6 id="13、添加外键"><a href="#13、添加外键" class="headerlink" title="13、添加外键"></a>13、添加外键</h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">ALTER</span> <span class="keyword">TABLE</span> 从表名 <span class="operator">/</span><span class="operator">/</span>student</span><br><span class="line">    <span class="operator">-</span><span class="operator">&gt;</span>   <span class="keyword">ADD</span> <span class="keyword">CONSTRAINT</span> (main_id_con)<span class="operator">/</span><span class="operator">/</span>外键 student里的tid</span><br><span class="line">    <span class="operator">-</span><span class="operator">&gt;</span>   <span class="keyword">FOREIGN</span> KEY (main_id)<span class="operator">/</span><span class="operator">/</span>从表外键字段(tid)</span><br><span class="line">    <span class="operator">-</span><span class="operator">&gt;</span>   <span class="keyword">REFERENCES</span>  主表(id); <span class="operator">/</span><span class="operator">/</span>teacher</span><br><span class="line">    <span class="operator">-</span><span class="operator">&gt;</span> </span><br></pre></td></tr></table></figure>
+
+<h6 id="14、多表查询"><a href="#14、多表查询" class="headerlink" title="14、多表查询"></a>14、多表查询</h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span></span><br><span class="line"><span class="keyword">distinct</span> t1.AGENT_ZONE <span class="keyword">as</span> agentzone,   #<span class="keyword">distinct</span> : 去重</span><br><span class="line"><span class="built_in">count</span>(<span class="keyword">distinct</span> t1.G_CORP_NAME) <span class="keyword">as</span> unitcount,</span><br><span class="line"><span class="built_in">count</span>(<span class="keyword">distinct</span> t1.BATCHNO) <span class="keyword">as</span> batchno,</span><br><span class="line"><span class="built_in">count</span>(<span class="keyword">case</span> t1.GBA_BANK_F <span class="keyword">when</span> <span class="string">&#x27;2&#x27;</span> <span class="keyword">then</span> <span class="number">1</span> <span class="keyword">end</span>) <span class="keyword">as</span> bpnums,  </span><br><span class="line">#<span class="keyword">case</span> <span class="keyword">when</span>:当t1.GAB_BANK_F为<span class="number">2</span>的时候等于<span class="number">1</span></span><br><span class="line"><span class="built_in">count</span>(<span class="keyword">case</span> t1.GAB_BANK_F <span class="keyword">when</span> <span class="string">&#x27;2&#x27;</span> <span class="keyword">then</span> <span class="number">1</span> <span class="keyword">end</span>) <span class="keyword">as</span> bcount,</span><br><span class="line">#<span class="keyword">case</span> <span class="keyword">when</span>:当t1.GAB_BANK_F为<span class="number">2</span>的时候等于G_AMOUNT 的值</span><br><span class="line"><span class="built_in">sum</span>(<span class="keyword">case</span> t1.GAB_BANK_F <span class="keyword">when</span> <span class="string">&#x27;2&#x27;</span> <span class="keyword">then</span> t1.G_AMOUNT <span class="keyword">end</span>) <span class="keyword">as</span> bamount,</span><br><span class="line"><span class="built_in">count</span>(<span class="keyword">case</span> t1.GBA_BANK_F <span class="keyword">when</span> <span class="string">&#x27;1&#x27;</span> <span class="keyword">then</span> <span class="number">1</span> <span class="keyword">end</span>) <span class="keyword">as</span> tpnums,</span><br><span class="line"><span class="built_in">count</span>(<span class="keyword">case</span> t1.GAB_BANK_F <span class="keyword">when</span> <span class="string">&#x27;1&#x27;</span> <span class="keyword">then</span> <span class="number">1</span> <span class="keyword">end</span>) <span class="keyword">as</span> tcount,</span><br><span class="line"><span class="built_in">sum</span>(<span class="keyword">case</span> t1.GAB_BANK_F <span class="keyword">when</span> <span class="string">&#x27;1&#x27;</span> <span class="keyword">then</span> t1.G_AMOUNT <span class="keyword">end</span>) <span class="keyword">as</span> tamount</span><br><span class="line"><span class="keyword">from</span> GJT_WAGES_DETAIL t1</span><br><span class="line"># <span class="keyword">left</span> join...on ：连接查询，即使右表中没有匹配，也从左表返回所有的行</span><br><span class="line"><span class="keyword">left</span> <span class="keyword">join</span> GJT_WAGES_SUMMARY t2 </span><br><span class="line"><span class="keyword">on</span> t1.BATCHNO <span class="operator">=</span> t2.BATCHNO</span><br><span class="line"><span class="keyword">where</span> <span class="number">1</span><span class="operator">=</span><span class="number">1</span></span><br><span class="line"><span class="keyword">and</span> WORKDATE <span class="keyword">between</span> <span class="string">&#x27;2020-04-11&#x27;</span> <span class="keyword">and</span> <span class="string">&#x27;2021-09-12&#x27;</span></span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> t1.AGENT_ZONE # 以t1.AGENT_ZONE分组  ，分组后如果还要使用<span class="keyword">where</span>条件，就用<span class="keyword">having</span>代替<span class="keyword">where</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="15、修改某一列的字段属性"><a href="#15、修改某一列的字段属性" class="headerlink" title="15、修改某一列的字段属性"></a>15、修改某一列的字段属性</h6><p><code>alter table user modify column sex varchar(50);</code></p>
+<h6 id="16、创建一个新表和某一旧表一样"><a href="#16、创建一个新表和某一旧表一样" class="headerlink" title="16、创建一个新表和某一旧表一样"></a>16、创建一个新表和某一旧表一样</h6><p><code>create table 【新表名】 like 【旧表名】;</code></p>
+<h6 id="17、修改某一列的列名"><a href="#17、修改某一列的列名" class="headerlink" title="17、修改某一列的列名"></a>17、修改某一列的列名</h6><p><code>alter table 【表名】 change 【旧列名】 【新列名】 【新列名类型】;</code></p>
+<h6 id="18、删除某一列"><a href="#18、删除某一列" class="headerlink" title="18、删除某一列"></a>18、删除某一列</h6><p><code>alter table 【表名】 drop 【列名】;</code></p>
+<h6 id="19、修改表名"><a href="#19、修改表名" class="headerlink" title="19、修改表名"></a>19、修改表名</h6><p><code>rename table 【旧表名】 to 【新表名】;</code></p>
+<h6 id="20、蠕虫复制"><a href="#20、蠕虫复制" class="headerlink" title="20、蠕虫复制"></a>20、蠕虫复制</h6><p><code>insert into 【新表】 select * from 【旧表】;</code><br>如果只想复制某几个字段：<br><code>insert into 【新表】(name,sex) select (name,sex) from 【旧表】;</code></p>
+<h6 id="21、单个升序、降序查询"><a href="#21、单个升序、降序查询" class="headerlink" title="21、单个升序、降序查询"></a>21、单个升序、降序查询</h6><p><code>select * from 【表名】 where 【查询条件】 order by 【根据什么字段】 【ASC/DESC】;</code>(ASC：升序。DESC：降序)</p>
+<h6 id="22、多个字段升序、降序查询"><a href="#22、多个字段升序、降序查询" class="headerlink" title="22、多个字段升序、降序查询"></a>22、多个字段升序、降序查询</h6><p><code>select * from 【表名】 where 【查询条件】 order by 【字段1】 【ASC/DESC】,【字段2】 【ASC/DESC】;</code>（ASC：升序。DESC：降序）<br>（1）想要将null值的数据往后就：（默认）<br><code>select * from 【表名】 where 【查询条件】 order by 【字段】 【ASC/DESC】 nulls last;</code><br>（2）想要将null值的数据往前排就：<br><code>select * from 【表名】 where 【查询条件】 order by 【字段】 【ASC/DESC】 nulls first;</code></p>
+<h6 id="23、分页"><a href="#23、分页" class="headerlink" title="23、分页"></a>23、分页</h6><p><code>limit</code>：跳过几条，当前页显示几条。<br>例如：<br>（1）<code>limit 0,5</code>：跳过0条，从第1条数据开始，显示5条，当前页面显示5条，相当于第一页，查找了5条；<br>（2）<code>limit 5,5</code>：跳过5条，从第6条数据开始，显示5条，当前页面显示5条，相当于第二页，查找了5条；<br>（3）<code>limit 2,5</code>：跳过2条，从第3条数据开始，显示5条，查找出第3、4、5、6、7五条数据显示在当前页面。</p>
+<h6 id="24、连接查询"><a href="#24、连接查询" class="headerlink" title="24、连接查询"></a>24、连接查询</h6><p>1、<code>left join...on...</code>：表1左连接表2，以左为主，表示以表1为主，关联上表2的数据；<br>2、<code>right join...on...</code>：右连接查询，和左连接查询相反；<br>3、<code>inner join...on...</code>：内连接查询，表示以两个表的交集为主，查询出来的数据是两个表交集的部分，其余没有关联的就不额外显示。<br><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000017369618">具体使用方法请点击</a></p>
+<h6 id="25、将数据库中的两个字段拼接"><a href="#25、将数据库中的两个字段拼接" class="headerlink" title="25、将数据库中的两个字段拼接"></a>25、将数据库中的两个字段拼接</h6><p><code>select id,concat(concat(student_no,&quot;--&quot;),name) as name,class_id from student;</code>：将学生的学号和姓名拼接起来表示（001–小明）。</p>
+<h6 id="26、视图"><a href="#26、视图" class="headerlink" title="26、视图"></a>26、视图</h6><p><strong>说明：</strong>对视图进行增删改操作，也会同步到表，只不过视图中没有的属性列，对应表中的属性列值为null。<br>1、创建视图<br><code>create or replace view stu_view as select id,name from student where id &lt;= 10;</code>：创建一个视图，如果已经存在视图就替换覆盖，从学生表查询id小于等于10的所有学生作为视图中的数据。<br>2、修改视图<br><code>create or replace view stu_view as select id,name from student where id &lt;= 10;</code><br>或者<br><code>alter view stu_view as select id,name from student where id &lt;= 10;</code><br>3、删除视图<br><code>drop view if exists view_stu;</code><br>4、视图检查<br><strong>说明：</strong>如果在创建视图的时候加上 with cascaded（或者是local） check option，那么对视图进行增、删、改操作的时候，必须满足where条件才能成功，不然就失败。<br>（1）<code>cascaded</code></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># 例子一</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">or</span> replace <span class="keyword">view</span> stu_view <span class="keyword">as</span> <span class="keyword">select</span> id,name <span class="keyword">from</span> student <span class="keyword">where</span> id <span class="operator">&lt;=</span> <span class="number">10</span> <span class="keyword">with</span> <span class="keyword">cascaded</span> <span class="keyword">check</span> option;</span><br><span class="line"># 成功的是：<span class="keyword">insert</span> <span class="keyword">into</span> stu_view <span class="keyword">values</span>(<span class="number">1</span>,<span class="string">&#x27;zxc&#x27;</span>);</span><br><span class="line"># 失败的是：<span class="keyword">insert</span> <span class="keyword">into</span> stu_view <span class="keyword">values</span>(<span class="number">15</span>,<span class="string">&#x27;zxc&#x27;</span>);</span><br><span class="line"></span><br><span class="line"># 例子二  </span><br><span class="line"># 创建视图一</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">or</span> replace <span class="keyword">view</span> stu_view_1 <span class="keyword">as</span> <span class="keyword">select</span> id,name <span class="keyword">from</span> student <span class="keyword">where</span> id <span class="operator">&lt;=</span> <span class="number">20</span>;</span><br><span class="line"></span><br><span class="line"># 创建试图二</span><br><span class="line"># 当视图二根据视图一所创建的，我们再进行增、删、改操作时，</span><br><span class="line"># 视图一也会默认加上 <span class="keyword">with</span> <span class="keyword">cascaded</span> <span class="keyword">check</span> option来进行视图检查。</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">or</span> replace <span class="keyword">view</span> stu_view_2 <span class="keyword">as</span> <span class="keyword">select</span> id,name <span class="keyword">from</span> stu_view_1 <span class="keyword">where</span> id <span class="operator">&gt;</span> <span class="number">10</span> <span class="keyword">with</span> <span class="keyword">cascaded</span> <span class="keyword">check</span> option;</span><br><span class="line"></span><br><span class="line"># 在视图二中，<span class="number">25</span>大于<span class="number">10</span>可以插入，但是在视图一中，<span class="number">25</span>不小于等于<span class="number">20</span>，所以插入失败。</span><br><span class="line"># 成功的是：<span class="keyword">insert</span> <span class="keyword">into</span> stu_view_2 <span class="keyword">values</span>(<span class="number">25</span>,<span class="string">&#x27;zxc&#x27;</span>); </span><br><span class="line"></span><br><span class="line"># 在视图二中，<span class="number">15</span>大于<span class="number">10</span>可以插入，在视图一中，<span class="number">15</span>小于<span class="number">20</span>，所以插入成功。</span><br><span class="line"># 失败的是：<span class="keyword">insert</span> <span class="keyword">into</span> stu_view_2 <span class="keyword">values</span>(<span class="number">15</span>,<span class="string">&#x27;zxc&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<p>（2）<code>local</code></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">/</span><span class="operator">/</span> 例子一</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">or</span> replace <span class="keyword">view</span> stu_view <span class="keyword">as</span> <span class="keyword">select</span> id,name <span class="keyword">from</span> student <span class="keyword">where</span> id <span class="operator">&lt;=</span> <span class="number">10</span> <span class="keyword">with</span> <span class="keyword">local</span> <span class="keyword">check</span> option;</span><br><span class="line"># 成功的是：<span class="keyword">insert</span> <span class="keyword">into</span> stu_view <span class="keyword">values</span>(<span class="number">1</span>,<span class="string">&#x27;zxc&#x27;</span>);</span><br><span class="line"># 失败的是：<span class="keyword">insert</span> <span class="keyword">into</span> stu_view <span class="keyword">values</span>(<span class="number">15</span>,<span class="string">&#x27;zxc&#x27;</span>);</span><br><span class="line"></span><br><span class="line"># 例子二</span><br><span class="line"># 创建视图一</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">or</span> replace <span class="keyword">view</span> stu_view_1 <span class="keyword">as</span> <span class="keyword">select</span> id,name <span class="keyword">from</span> student <span class="keyword">where</span> id <span class="operator">&lt;=</span> <span class="number">20</span>;</span><br><span class="line"></span><br><span class="line"># 创建视图二</span><br><span class="line"># 当视图二根据视图一所创建的，我们再进行增、删、改操作时，视图一按它自己所规定的来进行。</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">or</span> replace <span class="keyword">view</span> stu_view_2 <span class="keyword">as</span> <span class="keyword">select</span> id,name <span class="keyword">from</span> stu_view_1 <span class="keyword">where</span> id <span class="operator">&gt;</span> <span class="number">10</span> <span class="keyword">with</span> <span class="keyword">cascaded</span> <span class="keyword">check</span> option;</span><br><span class="line"></span><br><span class="line"># 在视图二中，<span class="number">25</span>大于<span class="number">10</span>可以插入，在视图一中，视图一没有设置视图检查，所以插入成功。</span><br><span class="line"># 成功的是：<span class="keyword">insert</span> <span class="keyword">into</span> stu_view_2 <span class="keyword">values</span>(<span class="number">25</span>,<span class="string">&#x27;zxc&#x27;</span>);</span><br><span class="line"></span><br><span class="line"># 在视图二中，<span class="number">8</span>不大于<span class="number">10</span>，所以插入失败。 </span><br><span class="line"># 失败的是：<span class="keyword">insert</span> <span class="keyword">into</span> stu_view_2 <span class="keyword">values</span>(<span class="number">8</span>,<span class="string">&#x27;zxc&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<p>5、视图更新<br>要使视图可更新，视图中的行与基础表中的行之间必须存在一对一的关系。如果视图包含以下任何一项，则该视图不可更新：<br>（1）聚合函数或窗口函数（sum、min、max、count等）；<br>（2）distinct；<br>（3）group by；<br>（4）having；<br>（5）union 或 unionall  </p>
+<h6 id="27、存储过程"><a href="#27、存储过程" class="headerlink" title="27、存储过程"></a>27、存储过程</h6><p><strong>说明：</strong>存储过程是事先经过编译并存储在数据库中的一段SQL语句的集合，可以接收参数，也可以返回数据。（也就是数据库SQL语言层面的代码封装与重用）<br>1、创建  </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> 存储过程名称([参数列表])</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    <span class="comment">-- SQL 语句</span></span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"># 例子：</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> p1()</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">select</span> <span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">from</span> student;</span><br><span class="line"><span class="keyword">end</span>;</span><br></pre></td></tr></table></figure>
+<p><strong>注意：</strong>在命令行中，执行创建存储过程的SQL时，需要通过关键字delimiter指定SQL语句的结束符。<br>例如：<br>（1）先在命令行执行：<code>delimiter $$</code>（这里表示使用$$符号为结束符）；<br>（2）然后再执行创建语句：  </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> p1()</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">select</span> <span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">from</span> student;</span><br><span class="line"><span class="keyword">end</span>$$</span><br></pre></td></tr></table></figure>
+<p>2、调用  </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">call</span> 名称([参数]);</span><br><span class="line"></span><br><span class="line"># 例子</span><br><span class="line"><span class="keyword">call</span> p1();</span><br></pre></td></tr></table></figure>
+<p>3、查看  </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 查询指定数据库的存储过程及状态信息</span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> information_schema.routines <span class="keyword">where</span> routine_schema <span class="operator">=</span> <span class="string">&#x27;xxx&#x27;</span>;</span><br><span class="line"></span><br><span class="line"># 查询某个存储过程的定义</span><br><span class="line"><span class="keyword">show</span> <span class="keyword">create</span> <span class="keyword">procedure</span> 存储过程名称;</span><br></pre></td></tr></table></figure>
+<p>4、删除  </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">procedure</span> [if <span class="keyword">exists</span>] 存储过程名称;</span><br></pre></td></tr></table></figure>
+<p>5、变量<br>（1）系统变量  </p>
+<ol>
+<li>查看系统变量<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 查看所有系统变量，下面 [] 的意思是二选一</span><br><span class="line"><span class="keyword">show</span> [session <span class="operator">|</span> <span class="keyword">global</span>] variables;</span><br><span class="line"></span><br><span class="line"># 可以通过 <span class="keyword">like</span> 模糊匹配方式查找变量</span><br><span class="line"><span class="keyword">show</span> [session <span class="operator">|</span> <span class="keyword">global</span>] variables <span class="keyword">like</span> <span class="string">&#x27;xxx变量名&#x27;</span>;</span><br><span class="line"></span><br><span class="line"># 查看指定变量的值，两个@表示系统变量</span><br><span class="line"><span class="keyword">select</span> @@[session <span class="operator">|</span> <span class="keyword">global</span>] 系统变量名;</span><br></pre></td></tr></table></figure></li>
+<li>设置系统变量<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 第一种方式</span><br><span class="line"><span class="keyword">set</span> [session <span class="operator">|</span> <span class="keyword">global</span>] 系统变量名 <span class="operator">=</span> 值;</span><br><span class="line"></span><br><span class="line"># 第二种方式</span><br><span class="line"><span class="keyword">set</span> @@[session <span class="operator">|</span> <span class="keyword">global</span>] 系统变量名 <span class="operator">=</span> 值;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>（2）用户自定义变量<br><strong>说明：</strong>不用提前声明，在用的时候直接用“@变量名” 使用就可以了。（两个@是系统变量，一个@是用户自定义变量）  </p>
+<ol>
+<li>赋值<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 使用<span class="keyword">set</span>赋值</span><br><span class="line"># 第一种方式</span><br><span class="line"><span class="keyword">set</span> <span class="variable">@var_name</span> <span class="operator">=</span> expr [,<span class="variable">@var_name</span> <span class="operator">=</span> expr]...;</span><br><span class="line"># 第二种方式</span><br><span class="line"><span class="keyword">set</span> <span class="variable">@var_name</span> :<span class="operator">=</span> expr [,<span class="variable">@var_name</span> :<span class="operator">=</span> expr]...;</span><br><span class="line"></span><br><span class="line"># 使用<span class="keyword">select</span>赋值</span><br><span class="line"># 第一种方式</span><br><span class="line"><span class="keyword">select</span> <span class="variable">@var_name</span> :<span class="operator">=</span> expr [,<span class="variable">@var_name</span> :<span class="operator">=</span> expr]...;</span><br><span class="line"># 第二种方式</span><br><span class="line"><span class="keyword">select</span> 字段名 <span class="keyword">into</span> <span class="variable">@var_name</span> <span class="keyword">from</span> 表名;</span><br></pre></td></tr></table></figure></li>
+<li>使用<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="variable">@var_name</span>;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>（3）局部变量<br><strong>说明：</strong>是根据需要定义在局部生效的变量，访问之前，需要 declare 声明，可用作存储过程内的局部变量和输入参数，局部变量的范围是在其内声明的 begin…end 块。  </p>
+<ol>
+<li>声明<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 变量类型就是数据库字段类型</span><br><span class="line"><span class="keyword">declare</span> 变量名 变量类型;</span><br></pre></td></tr></table></figure></li>
+<li>赋值<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> 变量名 <span class="operator">=</span> 值;</span><br><span class="line"><span class="keyword">set</span> 变量名 :<span class="operator">=</span> 值;</span><br><span class="line"><span class="keyword">select</span> 字段名 <span class="keyword">into</span> 变量名 <span class="keyword">from</span> 表名...;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>6、<code>if</code>语法</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">if 条件 <span class="keyword">then</span></span><br><span class="line">    ......</span><br><span class="line">elseif 条件<span class="number">2</span> <span class="keyword">then</span>      <span class="comment">-- 可选</span></span><br><span class="line">    ......</span><br><span class="line"><span class="keyword">else</span>                   <span class="comment">-- 可选</span></span><br><span class="line">    ......</span><br><span class="line"><span class="keyword">end</span> if;</span><br></pre></td></tr></table></figure>
+<p>例子：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"># 根据定义的分数score变量，判定当前分数对应的分数等级</span><br><span class="line"># score <span class="operator">&gt;=</span> <span class="number">85</span>分，等级为优秀</span><br><span class="line"># score <span class="operator">&gt;=</span> <span class="number">60</span>分且 score <span class="operator">&lt;</span> <span class="number">85</span>分为及格</span><br><span class="line"># score <span class="operator">&lt;</span> <span class="number">60</span>分为不及格</span><br><span class="line"># 无参</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> p1()</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">declare</span> score <span class="type">int</span> <span class="keyword">default</span> <span class="number">58</span>;</span><br><span class="line">    <span class="keyword">declare</span> <span class="keyword">result</span> varcher(<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">    if  score  <span class="operator">&gt;=</span>  <span class="number">85</span>  <span class="keyword">then</span></span><br><span class="line">        <span class="keyword">set</span>  <span class="keyword">result</span>  :<span class="operator">=</span>  <span class="string">&#x27;优秀&#x27;</span>;</span><br><span class="line">    elseif  score  <span class="operator">&gt;=</span>  <span class="number">60</span>  <span class="keyword">then</span></span><br><span class="line">        <span class="keyword">set</span>  <span class="keyword">result</span>  :<span class="operator">=</span>  <span class="string">&#x27;及格&#x27;</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">set</span>  <span class="keyword">result</span>  :<span class="operator">=</span>  <span class="string">&#x27;不及格&#x27;</span>;</span><br><span class="line">    <span class="keyword">end</span> if;</span><br><span class="line">    <span class="keyword">select</span> <span class="keyword">result</span>; # 将结果查询出来</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"># 有参（是需要将结果返回）</span><br><span class="line"># 下面参数说明：<span class="keyword">in</span>表示入参，<span class="keyword">out</span>表示返回结果的参数</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> p2(<span class="keyword">in</span> score <span class="type">int</span>,<span class="keyword">out</span> <span class="keyword">result</span> <span class="type">varchar</span>(<span class="number">10</span>))</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line"></span><br><span class="line">    if  score  <span class="operator">&gt;=</span>  <span class="number">85</span>  <span class="keyword">then</span></span><br><span class="line">        <span class="keyword">set</span>  <span class="keyword">result</span>  :<span class="operator">=</span>  <span class="string">&#x27;优秀&#x27;</span>;</span><br><span class="line">    elseif  score  <span class="operator">&gt;=</span>  <span class="number">60</span>  <span class="keyword">then</span></span><br><span class="line">        <span class="keyword">set</span>  <span class="keyword">result</span>  :<span class="operator">=</span>  <span class="string">&#x27;及格&#x27;</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">set</span>  <span class="keyword">result</span>  :<span class="operator">=</span>  <span class="string">&#x27;不及格&#x27;</span>;</span><br><span class="line">    <span class="keyword">end</span> if;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"># 调用，<span class="variable">@result</span>表示 用用户自定义变量接收p2的返回值</span><br><span class="line"><span class="keyword">call</span> p2(<span class="number">68</span>,<span class="variable">@result</span>);</span><br></pre></td></tr></table></figure>
+<p>7、<code>case</code>语法</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># 语法格式</span><br><span class="line"># 语法一，如果search_condition1成立，则执行statement_list1</span><br><span class="line"><span class="keyword">case</span></span><br><span class="line">    <span class="keyword">when</span> search_condition1 <span class="keyword">then</span> statement_list1</span><br><span class="line">    [<span class="keyword">when</span> search_condition2 <span class="keyword">then</span> statement_list2]...</span><br><span class="line">    [<span class="keyword">else</span> statement_list]</span><br><span class="line"><span class="keyword">end</span> <span class="keyword">case</span>;</span><br><span class="line"></span><br><span class="line"># 语法二，说明：case_value是表达式，如果表达式的结果为 search_condition1，就执行 search_condition1后的 <span class="keyword">then</span></span><br><span class="line"><span class="keyword">case</span> case_value</span><br><span class="line">    <span class="keyword">when</span> search_condition1 <span class="keyword">then</span> statement_list1</span><br><span class="line">    [<span class="keyword">when</span> search_condition2 <span class="keyword">then</span> statement_list2]...</span><br><span class="line">    [<span class="keyword">else</span> statement_list]</span><br><span class="line"><span class="keyword">end</span> <span class="keyword">case</span>;</span><br></pre></td></tr></table></figure>
+<p>例子：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"># 根据传入的月份，判定月份所属的季节</span><br><span class="line"># <span class="number">1</span><span class="number">-3</span>月份，为第一季度</span><br><span class="line"># <span class="number">4</span><span class="number">-6</span>月份，为第二季度</span><br><span class="line"># <span class="number">7</span><span class="number">-9</span>月份，为第三季度</span><br><span class="line"># <span class="number">10</span><span class="number">-12</span>月份，为第四季度</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> p1(<span class="keyword">in</span> <span class="keyword">month</span> <span class="type">int</span>)</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">declare</span> <span class="keyword">result</span> <span class="type">varchar</span>(<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">case</span></span><br><span class="line">        <span class="keyword">when</span> <span class="keyword">month</span> <span class="operator">&gt;=</span> <span class="number">1</span> <span class="keyword">and</span> <span class="keyword">month</span> <span class="operator">&lt;=</span> <span class="number">3</span> <span class="keyword">then</span></span><br><span class="line">            <span class="keyword">set</span> <span class="keyword">result</span> :<span class="operator">=</span> &quot;第一季度&quot;;</span><br><span class="line">        <span class="keyword">when</span> <span class="keyword">month</span> <span class="operator">&gt;=</span> <span class="number">4</span> <span class="keyword">and</span> <span class="keyword">month</span> <span class="operator">&lt;=</span> <span class="number">6</span> <span class="keyword">then</span></span><br><span class="line">            <span class="keyword">set</span> <span class="keyword">result</span> :<span class="operator">=</span> &quot;第二季度&quot;;</span><br><span class="line">        <span class="keyword">when</span> <span class="keyword">month</span> <span class="operator">&gt;=</span> <span class="number">7</span> <span class="keyword">and</span> <span class="keyword">month</span> <span class="operator">&lt;=</span> <span class="number">9</span> <span class="keyword">then</span></span><br><span class="line">            <span class="keyword">set</span> <span class="keyword">result</span> :<span class="operator">=</span> &quot;第三季度&quot;;</span><br><span class="line">        <span class="keyword">when</span> <span class="keyword">month</span> <span class="operator">&gt;=</span> <span class="number">10</span> <span class="keyword">and</span> <span class="keyword">month</span> <span class="operator">&lt;=</span> <span class="number">12</span> <span class="keyword">then</span></span><br><span class="line">            <span class="keyword">set</span> <span class="keyword">result</span> :<span class="operator">=</span> &quot;第四季度&quot;;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">set</span> <span class="keyword">result</span> :<span class="operator">=</span> &quot;非法参数&quot;;</span><br><span class="line">    <span class="keyword">end</span> <span class="keyword">case</span>;</span><br><span class="line">	# 查询展示，相当于println输出</span><br><span class="line">    <span class="keyword">select</span> concat(<span class="string">&#x27;您输入的月份为：&#x27;</span>,<span class="keyword">month</span>,<span class="string">&#x27;,所有的季度为：&#x27;</span>,<span class="keyword">result</span>);  </span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"># 调用</span><br><span class="line"><span class="keyword">call</span> p1(<span class="number">4</span>);</span><br></pre></td></tr></table></figure>
+<p>8、<code>while</code>语法<br><strong>说明：</strong>满足条件后再执行循环体中的SQL语句。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 语法，先判定条件，如果条件为<span class="literal">true</span>，则执行逻辑，否则不执行</span><br><span class="line">while 条件 do</span><br><span class="line">    <span class="keyword">SQL</span>逻辑...</span><br><span class="line"><span class="keyword">end</span> while;</span><br></pre></td></tr></table></figure>
+<p>例子：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># 例子：计算从<span class="number">1</span>累加到n的值，n为传入的参数值。</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> p(<span class="keyword">in</span> n <span class="type">int</span>)</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">declare</span> total <span class="type">int</span> <span class="keyword">default</span> <span class="number">0</span>;</span><br><span class="line">    while n <span class="operator">&gt;</span> <span class="number">0</span> do</span><br><span class="line">        <span class="keyword">set</span> total :<span class="operator">=</span> total <span class="operator">+</span> n;</span><br><span class="line">        <span class="keyword">set</span> n :<span class="operator">=</span> n <span class="operator">-</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">end</span> while;</span><br><span class="line">    <span class="keyword">select</span> total;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"># 调用</span><br><span class="line"><span class="keyword">call</span> p(<span class="number">10</span>);</span><br></pre></td></tr></table></figure>
+<p>9、<code>repeat</code>语法<br><strong>说明：</strong>当满足条件的时候退出循环。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 语法，先执行一次逻辑，然后判断逻辑是否满足，</span><br><span class="line"># 如果满足就退出；如果不满足就继续循环</span><br><span class="line">repeat</span><br><span class="line">    <span class="keyword">SQL</span>逻辑...</span><br><span class="line">    until 条件</span><br><span class="line"><span class="keyword">end</span> repeat;</span><br></pre></td></tr></table></figure>
+<p>例子：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># 例子：计算从<span class="number">1</span>累加到n的值，n为传入的参数值。</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> p(<span class="keyword">in</span> n <span class="type">int</span>)</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">declare</span> total <span class="type">int</span> <span class="keyword">default</span> <span class="number">0</span>;</span><br><span class="line">    repeat </span><br><span class="line">        <span class="keyword">set</span> total :<span class="operator">=</span> total <span class="operator">+</span> n;</span><br><span class="line">        <span class="keyword">set</span> n :<span class="operator">=</span> n <span class="operator">-</span> <span class="number">1</span>;</span><br><span class="line">    until n <span class="operator">&lt;=</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">end</span> repeat;</span><br><span class="line">    <span class="keyword">select</span> total;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"># 调用</span><br><span class="line"><span class="keyword">call</span> p(<span class="number">10</span>);</span><br></pre></td></tr></table></figure>
+<p>10、<code>loop</code>语法<br><strong>说明：</strong>简单的循环，如果不在SQL逻辑中增加退出循环的条件，可以用来实现简单的死循环。loop配合下面两个语句使用：<br>（1）leave：配合循环使用，退出循环；<br>（2）iterate：必须用在循环中，作用是跳过当前循环剩下的语句，直接进入下一个循环。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 语法</span><br><span class="line">[begin_label]:loop</span><br><span class="line">    <span class="keyword">SQL</span>逻辑...</span><br><span class="line"><span class="keyword">end</span> loop [end_label];</span><br><span class="line"></span><br><span class="line"># 退出两个语句的使用</span><br><span class="line">leavel label; # 退出指定标记的循环体，label为上面begin_label</span><br><span class="line">iterate label; # 直接进入下一次循环</span><br></pre></td></tr></table></figure>
+<p>例子：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># 例子：计算从<span class="number">1</span>累加到n的值，n为传入的参数值。</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> p(<span class="keyword">in</span> n <span class="type">int</span>)</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">declare</span> total <span class="type">int</span> <span class="keyword">default</span> <span class="number">0</span>;</span><br><span class="line">    sum:loop </span><br><span class="line">        if n <span class="operator">&lt;=</span> <span class="number">0</span> <span class="keyword">then</span></span><br><span class="line">            leave sum;</span><br><span class="line">        <span class="keyword">end</span> if;</span><br><span class="line">            <span class="keyword">set</span> total :<span class="operator">=</span> total <span class="operator">+</span> n;</span><br><span class="line">            <span class="keyword">set</span> n :<span class="operator">=</span> n <span class="operator">-</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">end</span> loop sum;</span><br><span class="line">    <span class="keyword">select</span> total;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"># 调用</span><br><span class="line"><span class="keyword">call</span> p(<span class="number">10</span>);</span><br></pre></td></tr></table></figure>
+<p>11、游标<code>cursor</code><br><strong>说明：</strong>用来存储查询结果集的数据类型，在存储过程和函数中可以使用游标对结果集进行循环处理。游标的使用包括游标的声明、open、fetch和close。<br>（1）声明游标<br><code>declare 游标名称 cursor for 查询语句;</code><br>（2）打开游标<br><code>open 游标名称;</code><br>（3）获取游标记录<br><code>fetch 游标名称 into 变量[,变量];</code><br>（4）关闭游标<br><code>close 游标名称;</code><br>例如：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"># 根据传入的参数 uage，来查询用户表 tb_user 中</span><br><span class="line"># 所有的用户年龄小于等于 uage 的用户姓名和专业</span><br><span class="line"># 并将用户的姓名和专业插入到所创建的一张新表中</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> p(<span class="keyword">in</span> uage <span class="type">int</span>) # 创建存储过程</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    # 注意：游标的声明必须在普通的声明之后</span><br><span class="line">    # 声明两个变量uname、upro</span><br><span class="line">    <span class="keyword">declare</span> uname <span class="type">varchar</span>(<span class="number">100</span>);</span><br><span class="line">    <span class="keyword">declare</span> upro <span class="type">varchar</span>(<span class="number">100</span>);</span><br><span class="line">    # 声明一个游标，并把查询结果集赋值给这个游标</span><br><span class="line">    <span class="keyword">declare</span> u_cursor <span class="keyword">cursor</span> <span class="keyword">for</span> <span class="keyword">select</span> name,profession <span class="keyword">from</span> tb_user <span class="keyword">where</span> age <span class="operator">&lt;=</span> uage;</span><br><span class="line">    # 声明一个条件处理程序，如果满足状态<span class="number">02000</span>就关闭游标</span><br><span class="line">    <span class="keyword">declare</span> exit handler <span class="keyword">for</span> <span class="keyword">SQLSTATE</span> <span class="string">&#x27;02000&#x27;</span> <span class="keyword">close</span> u_cursor</span><br><span class="line">     </span><br><span class="line">    # 如果表 tb_user_pro 存在就删除</span><br><span class="line">    <span class="keyword">drop</span> <span class="keyword">table</span> if <span class="keyword">exists</span> tb_user_pro;</span><br><span class="line">    # 如果表 tb_user_pro 不存在就创建</span><br><span class="line">    <span class="keyword">create</span> <span class="keyword">table</span> if <span class="keyword">not</span> <span class="keyword">exists</span> tb_user_pro(</span><br><span class="line">        id <span class="type">int</span> <span class="keyword">primary</span> key auto_increment,</span><br><span class="line">        name <span class="type">varchar</span>(<span class="number">100</span>),</span><br><span class="line">        profession <span class="type">varchar</span>(<span class="number">100</span>)</span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">    # 开启游标</span><br><span class="line">    <span class="keyword">open</span> u_cursor;</span><br><span class="line">    # 循环遍历游标，将游标中的name和profession的值分别赋值给上面声明的uname和upro</span><br><span class="line">    #  将uanme和upro插入新创建的表 tb_user_pro 中</span><br><span class="line">    while <span class="literal">true</span> do</span><br><span class="line">        <span class="keyword">fetch</span> u_cursor <span class="keyword">into</span> uname,upro;</span><br><span class="line">        <span class="keyword">insert</span> <span class="keyword">into</span> tb_user_pro <span class="keyword">values</span>(<span class="keyword">null</span>,uname,upro);</span><br><span class="line">    <span class="keyword">end</span> while;</span><br><span class="line">    # 关闭游标</span><br><span class="line">    <span class="keyword">close</span> u_cursor;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"># 调用</span><br><span class="line"><span class="keyword">call</span> p(<span class="number">40</span>);</span><br></pre></td></tr></table></figure>
+<p>12、条件处理程序<code>handler</code><br><strong>说明：</strong>用来定义在流程控制结构执行过程中遇到问题时相应的处理步骤。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 语法</span><br><span class="line"># handler_action说明：continue:继续执行当前程序  exit:终止执行当前程序</span><br><span class="line"># condition_value说明：<span class="keyword">SQLSTATE</span> sqlstate_value:状态码</span><br><span class="line"><span class="keyword">declare</span> handler_action handler <span class="keyword">for</span> condition_value[,condition_value]... statement;</span><br><span class="line"></span><br><span class="line"># 例子在<span class="number">11</span>例子中</span><br></pre></td></tr></table></figure>
+
+<h6 id="28、触发器"><a href="#28、触发器" class="headerlink" title="28、触发器"></a>28、触发器</h6><p><strong>说明：</strong>可以在insert、update和delete之前或者之后，触发并执行触发器中定义的SQL语句的集合。<br>使用两个 old 和 new 来引用触发器中发生的变化内容：<br>（1）insert型触发器（只有new）<br>new表示将要或者已经新增的数据。<br>（2）update型触发器（有 old 也有 new ）<br>old表示修改之前的数据，new表示将要或已经修改后的数据<br>（3）delete型触发器（只有old）<br>old表示将要或者已经删除的数据<br>1、语法<br>（1）创建  </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># trigger_name：触发器名称</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">trigger</span> trigger_name</span><br><span class="line"># 选择是之前还是之后，是插入、更新还是删除</span><br><span class="line">before<span class="operator">/</span>after  <span class="keyword">insert</span><span class="operator">/</span><span class="keyword">update</span><span class="operator">/</span><span class="keyword">delete</span></span><br><span class="line"># table_name：表名。<span class="keyword">for</span> <span class="keyword">each</span> <span class="type">row</span>：行级触发器（mysql中只支持行级）</span><br><span class="line"><span class="keyword">on</span> table_name <span class="keyword">for</span> <span class="keyword">each</span> <span class="type">row</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    trigger_content; # 触发器的逻辑</span><br><span class="line"><span class="keyword">end</span>;</span><br></pre></td></tr></table></figure>
+<p>（2）查看<br><code>show triggers;</code><br>（3）删除  </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 如果没有指定 schema_name，默认为当前数据库</span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">trigger</span> [schema_name.]trigger_name;</span><br></pre></td></tr></table></figure>
+<p>2、例子<br>想要在插入用户表之后，把信息也插入到 tb_user 表中：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">trigger</span> tb_user_insert_trigger</span><br><span class="line">after <span class="keyword">insert</span> <span class="keyword">on</span> tb_user <span class="keyword">for</span> <span class="keyword">each</span> <span class="type">row</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    <span class="operator">/</span><span class="operator">/</span> 说明：new.id：插入到用户表的id；new.name：插入到用户表的姓名</span><br><span class="line">    <span class="keyword">insert</span> <span class="keyword">into</span> user_logs(id,operation,operate_time,operate_id,operate_name) <span class="keyword">values</span>(<span class="keyword">null</span>,<span class="string">&#x27;insert&#x27;</span>,now(),new.id,new.name);</span><br><span class="line"><span class="keyword">end</span>;</span><br></pre></td></tr></table></figure>
+      </section>
+      <section class="extra">
+        
+          <ul class="copyright">
+  
+    <li><strong>本文作者：</strong>ZcZjy</li>
+    <li><strong>本文链接：</strong><a href="https://zuo-junyuan.gitee.io/2023/10/12/Mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html" title="https:&#x2F;&#x2F;zuo-junyuan.gitee.io&#x2F;2023&#x2F;10&#x2F;12&#x2F;Mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0&#x2F;index.html">https:&#x2F;&#x2F;zuo-junyuan.gitee.io&#x2F;2023&#x2F;10&#x2F;12&#x2F;Mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0&#x2F;index.html</a></li>
+    <li><strong>版权声明：</strong>本博客所有文章均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" title="BY-NC-SA" target="_blank" rel="noopener">BY-NC-SA</a> 许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+          <section class="donate">
+  <div id="qrcode-donate">
+    <img   class="lazyload" data-original="/images/zjyzfb.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+        
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mysql/" rel="tag">Mysql</a></li></ul> 
+
+        
+  <nav class="nav">
+    <a></a>
+    <a href="/2023/10/11/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Linux学习笔记<i class="iconfont iconright"></i></a>
+  </nav>
+
+      </section>
+      
+        <section class="comments">
+  
+    <div class="btn" id="comments-btn">查看评论</div>
+  
+  
+<div id="valine"></div>
+<script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  window.onload = function () {
+    var loadValine = function () {
+      new Valine({
+        el: '#valine',
+        app_id: "YBz2laX5qgCJLxNTpC7akJuU-gzGzoHsz",
+        app_key: "lHPh4E9b3LU0DWfqppMWL7Tt",
+        placeholder: "O(∩_∩)O~欢迎留言~v😍！",
+        avatar: "wavatar",
+        pageSize: "10",
+        lang: "zh-CN",
+      });
+    }
+    if ( true ) {
+      $("#comments-btn").on("click", function () {
+        $(this).hide();
+        loadValine();
+      });
+    } else {
+      loadValine();
+    }
+  };
+</script>
+
+</section>
+      
+    </section>
+  </div>
+</article>
+
+</div>
+      <div class="col-xl-3">
+        
+          
+  <aside class="toc-wrap">
+    <h3 class="toc-title">文章目录：</h3>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81Mysql%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4"><span class="toc-text">一、Mysql操作命令</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1%E3%80%81%E8%BF%9E%E6%8E%A5mysql"><span class="toc-text">1、连接mysql</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2%E3%80%81%E6%9F%A5%E7%9C%8B%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">2、查看数据库</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3%E3%80%81%E9%80%89%E6%8B%A9%E8%A6%81%E4%BD%BF%E7%94%A8%E5%93%AA%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">3、选择要使用哪个数据库</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#4%E3%80%81%E6%9F%A5%E7%9C%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E9%87%8C%E6%9C%89%E5%87%A0%E4%B8%AA%E8%A1%A8"><span class="toc-text">4、查看数据库里有几个表</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#5%E3%80%81%E5%88%9B%E5%BB%BA%E8%A1%A8"><span class="toc-text">5、创建表</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#6%E3%80%81%E6%9F%A5%E7%9C%8B%E8%A1%A8%E7%BB%93%E6%9E%84"><span class="toc-text">6、查看表结构</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#7%E3%80%81%E8%AE%BE%E7%BD%AE%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98"><span class="toc-text">7、设置中文乱码问题</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#8%E3%80%81%E6%8F%92%E5%85%A5%E5%A4%9A%E4%B8%AA%E6%95%B0%E6%8D%AE"><span class="toc-text">8、插入多个数据</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#9%E3%80%81%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE"><span class="toc-text">9、删除数据</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#10%E3%80%81%E6%9B%B4%E6%94%B9%E6%95%B0%E6%8D%AE"><span class="toc-text">10、更改数据</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#11%E3%80%81%E5%88%A0%E9%99%A4%E8%A1%A8"><span class="toc-text">11、删除表</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#12%E3%80%81%E8%A1%A8%E4%B8%AD%E6%96%B0%E5%A2%9E%E4%B8%80%E5%88%97%E5%B1%9E%E6%80%A7"><span class="toc-text">12、表中新增一列属性</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#13%E3%80%81%E6%B7%BB%E5%8A%A0%E5%A4%96%E9%94%AE"><span class="toc-text">13、添加外键</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#14%E3%80%81%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2"><span class="toc-text">14、多表查询</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#15%E3%80%81%E4%BF%AE%E6%94%B9%E6%9F%90%E4%B8%80%E5%88%97%E7%9A%84%E5%AD%97%E6%AE%B5%E5%B1%9E%E6%80%A7"><span class="toc-text">15、修改某一列的字段属性</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#16%E3%80%81%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%96%B0%E8%A1%A8%E5%92%8C%E6%9F%90%E4%B8%80%E6%97%A7%E8%A1%A8%E4%B8%80%E6%A0%B7"><span class="toc-text">16、创建一个新表和某一旧表一样</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#17%E3%80%81%E4%BF%AE%E6%94%B9%E6%9F%90%E4%B8%80%E5%88%97%E7%9A%84%E5%88%97%E5%90%8D"><span class="toc-text">17、修改某一列的列名</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#18%E3%80%81%E5%88%A0%E9%99%A4%E6%9F%90%E4%B8%80%E5%88%97"><span class="toc-text">18、删除某一列</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#19%E3%80%81%E4%BF%AE%E6%94%B9%E8%A1%A8%E5%90%8D"><span class="toc-text">19、修改表名</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#20%E3%80%81%E8%A0%95%E8%99%AB%E5%A4%8D%E5%88%B6"><span class="toc-text">20、蠕虫复制</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#21%E3%80%81%E5%8D%95%E4%B8%AA%E5%8D%87%E5%BA%8F%E3%80%81%E9%99%8D%E5%BA%8F%E6%9F%A5%E8%AF%A2"><span class="toc-text">21、单个升序、降序查询</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#22%E3%80%81%E5%A4%9A%E4%B8%AA%E5%AD%97%E6%AE%B5%E5%8D%87%E5%BA%8F%E3%80%81%E9%99%8D%E5%BA%8F%E6%9F%A5%E8%AF%A2"><span class="toc-text">22、多个字段升序、降序查询</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#23%E3%80%81%E5%88%86%E9%A1%B5"><span class="toc-text">23、分页</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#24%E3%80%81%E8%BF%9E%E6%8E%A5%E6%9F%A5%E8%AF%A2"><span class="toc-text">24、连接查询</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#25%E3%80%81%E5%B0%86%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%AD%97%E6%AE%B5%E6%8B%BC%E6%8E%A5"><span class="toc-text">25、将数据库中的两个字段拼接</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#26%E3%80%81%E8%A7%86%E5%9B%BE"><span class="toc-text">26、视图</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#27%E3%80%81%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B"><span class="toc-text">27、存储过程</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#28%E3%80%81%E8%A7%A6%E5%8F%91%E5%99%A8"><span class="toc-text">28、触发器</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li></ol>
+  </aside>
+
+        
+      </div>
+    </div>
+  </div>
+</main>
+  
+
+<footer class="footer">
+  <div class="footer-social"><a 
+        href="tencent://message/?Menu=yes&uin=894519210 "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#12B7F5'" 
+        onMouseOut="this.style.color='#88ada6'">
+          <i class="iconfont  iconQQ "></i>
+      </a><a 
+        href="javascript:; "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#09BB07'" 
+        onMouseOut="this.style.color='#88ada6'">
+          <i class="iconfont  iconwechat-fill "></i>
+      </a><a 
+        href="https://www.instagram.com/izhaoo/ "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#DA2E76'" 
+        onMouseOut="this.style.color='#88ada6'">
+          <i class="iconfont  iconinstagram "></i>
+      </a><a 
+        href="https://github.com/zhaoo "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#9f7be1'" 
+        onMouseOut="this.style.color='#88ada6'">
+          <i class="iconfont  icongithub-fill "></i>
+      </a><a 
+        href="mailto:izhaoo@163.com "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color=#FF3B00" 
+        onMouseOut="this.style.color='#88ada6'">
+          <i class="iconfont  iconmail"></i>
+      </a></div>
+  
+    <div class="footer-copyright"><p>Copyright© 2023 建站  |  ZcZjy ( 还没备案喔~！！！ )</p><p>联系我：540507521@qq.com</p><p>关于我：我是ZcZjy</p><p>积少成多，只要学不死就往死里学👀</p><p>喜欢分享，也喜欢交朋友，正在努力钻研java、spring全家桶、前端vue等等技术，梦想成为一名技术大牛</p></div>
+  
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+    <div class="fab fab-like">
+      <i class="iconfont iconheart"></i>
+    </div>
+  
+  
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+  
+    <div class="search">
+  <div class="search-container">
+    <div class="search-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <div class="search-input-wrapper">
+      <i class="search-input-icon iconfont iconsearch"></i>
+      <input class="search-input" type="search" id="search-input" placeholder="Search..." autofocus autocomplete="off"
+        autocorrect="off" autocapitalize="off">
+    </div>
+    <div class="search-output" id="search-output"></div>
+  </div>
+</div>
+  
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+  <script>
+  $.getScript("//cdn.jsdelivr.net/npm/leancloud-storage@4.1.0/dist/av-min.js", () => {
+
+    AV.init({
+      appId: 'YBz2laX5qgCJLxNTpC7akJuU-gzGzoHsz',
+      appKey: 'lHPh4E9b3LU0DWfqppMWL7Tt',
+      serverURLs: 'https://leancloud.cn/',
+    });
+
+    const Counter = AV.Object.extend("Counter");
+    const Like = AV.Object.extend("Like");
+
+    const showCount = (Counter) => {
+      const asyncLimit = new AsyncLimit(2);
+      $(".leancloud-counter").each(async (e) => {
+        const url = $(".leancloud-counter").eq(e).attr('id').trim();
+        const query = new AV.Query("Counter");
+        query.equalTo("words", url);
+        let count = await asyncLimit.run(() => query.count());
+        $(".leancloud-counter").eq(e).text(count ? count : 0);
+      });
+    }
+
+    const addCount = (Counter) => {
+      const url = $(".leancloud-counter").length === 1 ? $(".leancloud-counter").attr('id').trim() : 'https://zuo-junyuan.gitee.io';
+      var query = new Counter;
+      query.save({
+        words: url
+      });
+    }
+
+    const showLike = (Like) => {
+      const asyncLimit = new AsyncLimit(2);
+      $(".leancloud-like").each(async (e) => {
+        const url = $(".leancloud-like").eq(e).attr('id').trim();
+        const query = new AV.Query("Like");
+        query.equalTo("path", url);
+        let count = await asyncLimit.run(() => query.count());
+        $(".leancloud-like").eq(e).text(count ? count : 0);
+      });
+    }
+
+    const addLike = (Like) => {
+      const url = $(".leancloud-like").length === 1 ? $(".leancloud-like").attr('id').trim() : 'https://zuo-junyuan.gitee.io';
+      var query = new Like;
+      query.save({
+        path: url,
+        nickName: 'Anonymous'
+      });
+      $(".leancloud-like").addClass('islike');
+      $(".fab-like").children(".iconfont").removeClass("iconheart").addClass("iconheart-fill").css("color", "#eb3223");
+      ZHAOO.zui.message({ text: '爱你哦~', type: 'success' });
+      setTimeout(() => showLike(Like), 1000);
+    }
+
+    const handleLikeClick = () => {
+      const isLike = $(".leancloud-like").length === 1 && $(".leancloud-like").hasClass('islike') ? true : false;
+      if (isLike) {
+        ZHAOO.zui.message({ text: '小心心不可以收回呢~', type: 'warning' });
+      } else {
+        addLike(Like);
+      }
+    }
+
+    $(function () {
+      addCount(Counter);
+      showCount(Counter);
+      showLike(Like);
+      $(".fab-like").on("click", function () {
+        handleLikeClick();
+      });
+    });
+
+  });
+</script>
+
+
+
+
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+</html>
